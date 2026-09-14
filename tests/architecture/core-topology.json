@@ -1,0 +1,30 @@
+{
+    "schemaVersion": 1,
+    "allowedRootFiles": ["adapter-spi.ts", "index.ts", "restricted-operations.ts", "type-guards.ts", "types.ts"],
+    "rootDomains": { "restricted-operations.ts": "restricted_entrypoint" },
+    "domains": {
+        "adapters": ["catalog", "foundation", "specs"],
+        "catalog": ["foundation", "persistence", "specs"],
+        "contracts": [],
+        "deployment": ["catalog", "foundation", "persistence", "render"],
+        "entrypoint": ["adapters", "foundation", "orchestration", "render", "specs"],
+        "foundation": [],
+        "orchestration": [
+            "adapters",
+            "catalog",
+            "deployment",
+            "foundation",
+            "persistence",
+            "render",
+            "reverse",
+            "source-import",
+            "specs"
+        ],
+        "persistence": ["foundation"],
+        "render": ["adapters", "catalog", "foundation", "specs"],
+        "reverse": ["catalog", "deployment", "foundation", "render"],
+        "restricted_entrypoint": ["deployment", "orchestration", "source-import"],
+        "source-import": ["adapters", "catalog", "deployment", "foundation", "persistence", "render", "specs"],
+        "specs": ["foundation"]
+    }
+}

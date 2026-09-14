@@ -1,0 +1,4 @@
+{
+    "main": "../dist/restricted-transport.js",
+    "types": "../dist/restricted-transport.d.ts"
+}

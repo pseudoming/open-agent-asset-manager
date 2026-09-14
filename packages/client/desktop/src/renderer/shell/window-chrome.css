@@ -1,0 +1,209 @@
+:root {
+    --window-chrome-height: 38px;
+}
+
+.desktop-window-frame {
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    min-width: 0;
+    background: var(--color-canvas);
+    grid-template-rows: var(--window-chrome-height) minmax(0, 1fr);
+}
+
+.desktop-window-chrome {
+    position: relative;
+    z-index: 100;
+    min-width: 0;
+    background: var(--color-sidebar);
+    color: var(--color-text);
+    user-select: none;
+    -webkit-app-region: drag;
+}
+
+.desktop-window-chrome-content {
+    display: flex;
+    width: env(titlebar-area-width, 100%);
+    height: var(--window-chrome-height);
+    min-width: 0;
+    max-width: calc(100% - env(titlebar-area-x, 0px));
+    align-items: center;
+    margin-left: env(titlebar-area-x, 0);
+}
+
+.desktop-window-leading-actions,
+.desktop-window-menus {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    -webkit-app-region: no-drag;
+}
+
+.desktop-window-leading-actions {
+    gap: 2px;
+    padding-left: 6px;
+}
+
+.desktop-window-icon-button,
+.desktop-window-menu-trigger,
+.desktop-window-menu-item {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.desktop-window-icon-button {
+    width: 30px;
+    min-width: 30px;
+    min-height: 28px;
+    border-radius: 5px;
+    padding: 0;
+}
+
+.desktop-window-icon-button:hover:not(:disabled),
+.desktop-window-menu-trigger:hover,
+.desktop-window-menu-trigger[aria-expanded="true"] {
+    border-color: transparent;
+    background: var(--color-surface-hover);
+    color: var(--color-text);
+}
+
+.desktop-window-icon-button:disabled {
+    opacity: 0.34;
+}
+
+.desktop-window-menus {
+    margin-left: 3px;
+}
+
+.desktop-window-menu {
+    position: relative;
+}
+
+.desktop-window-menu-trigger {
+    min-height: 26px;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 0 8px;
+}
+
+.desktop-window-menu-popover {
+    position: absolute;
+    z-index: 110;
+    top: calc(100% + 5px);
+    left: 0;
+    display: grid;
+    width: max-content;
+    min-width: 205px;
+    border: 0;
+    border-radius: var(--radius-menu);
+    background: var(--color-surface-raised);
+    box-shadow: var(--shadow-menu);
+    overflow: hidden;
+    padding: 5px;
+    -webkit-app-region: no-drag;
+}
+
+.desktop-window-menu-item {
+    display: grid;
+    min-height: 30px;
+    align-items: center;
+    border-radius: 4px;
+    font-size: 12px;
+    gap: 7px;
+    grid-template-columns: 16px minmax(8rem, 1fr) auto;
+    padding: 5px 8px;
+    text-align: left;
+}
+
+.desktop-window-menu-item[data-separator-before="true"] {
+    margin-top: 5px;
+    border-top: 1px solid var(--color-border);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding-top: 9px;
+}
+
+.desktop-window-menu-item:hover:not(:disabled) {
+    border-color: transparent;
+    background: var(--color-surface-hover);
+    color: var(--color-text);
+}
+
+.desktop-window-menu-item[data-selected="true"] {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.desktop-window-menu-check {
+    display: grid;
+    width: 16px;
+    height: 16px;
+    place-items: center;
+}
+
+.desktop-window-menu-item kbd {
+    color: var(--color-text-tertiary);
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.desktop-window-drag-region {
+    min-width: 4rem;
+    flex: 1 1 auto;
+    align-self: stretch;
+    pointer-events: none;
+}
+
+.desktop-about-identity {
+    display: grid;
+    align-items: start;
+    gap: var(--space-3);
+    grid-template-columns: auto minmax(0, 1fr);
+}
+
+.desktop-about-identity > svg {
+    color: var(--color-accent-strong);
+    margin-top: 2px;
+}
+
+.desktop-about-identity strong {
+    color: var(--color-text);
+}
+
+.desktop-about-identity p {
+    margin: 0.35rem 0 0;
+}
+
+.desktop-window-action-error {
+    max-width: 15rem;
+    flex: 0 1 auto;
+    color: var(--color-danger);
+    font-size: 10px;
+    overflow: hidden;
+    padding-right: 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-app-region: no-drag;
+}
+
+.desktop-window-content {
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.desktop-window-content > :is(.startup-loading, .centered-shell, .onboarding-shell, .guided-import-shell, .settings-shell),
+.desktop-window-content .project-library-shell {
+    height: 100%;
+    min-height: 100%;
+}
+
+@media (max-width: 760px) {
+    .desktop-window-menu-trigger {
+        padding-inline: 6px;
+    }
+}

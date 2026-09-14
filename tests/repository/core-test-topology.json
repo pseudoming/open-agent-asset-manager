@@ -1,0 +1,46 @@
+{
+    "schemaVersion": 1,
+    "testRoot": "packages/core/tests",
+    "domains": [
+        {
+            "name": "adapters",
+            "responsibility": "Provider registry, static contract, and probe/read dispatch scenarios.",
+            "scenarioSubtrees": []
+        },
+        {
+            "name": "source-import",
+            "responsibility": "Source read, preview/accept, promotion, and portable dialect scenarios.",
+            "scenarioSubtrees": []
+        },
+        {
+            "name": "catalog",
+            "responsibility": "Asset, Version, Project, Settings, manifest, payload, and reindex scenarios.",
+            "scenarioSubtrees": []
+        },
+        {
+            "name": "foundation",
+            "responsibility": "Crypto, text order, validators, and runtime-neutral mechanical scenarios.",
+            "scenarioSubtrees": []
+        },
+        {
+            "name": "contracts",
+            "responsibility": "Public DTO, schema, Spec registry, and cross-domain CoreService contract scenarios.",
+            "scenarioSubtrees": []
+        },
+        {
+            "name": "render",
+            "responsibility": "Render analysis, selection, materialization, and inspection scenarios.",
+            "scenarioSubtrees": []
+        },
+        {
+            "name": "deployment",
+            "responsibility": "Journal, lock, CAS, executor, recovery, and state-authority scenarios.",
+            "scenarioSubtrees": []
+        },
+        {
+            "name": "reverse",
+            "responsibility": "Reverse accept, marker, reconcile, and crash-recovery scenarios.",
+            "scenarioSubtrees": []
+        }
+    ]
+}

@@ -1,0 +1,158 @@
+export const ENGLISH_DESKTOP_IMPORT_PREVIEW_MESSAGES = {
+    "import.ui.candidate.incomplete_help":
+        "This Asset contains settings OAAM cannot preserve yet. To avoid changing how it behaves, it will not be imported this time. Open the file below to review it; other selected Assets are unaffected.",
+    "import.ui.candidate.incomplete_help_file":
+        "This Asset contains settings OAAM cannot preserve yet. To avoid changing how it behaves, it will not be imported this time. Open {path} below to review it; other selected Assets are unaffected.",
+    "import.ui.candidate.incomplete_help.antigravity_skill_trigger":
+        "This Skill uses a trigger setting, but OAAM cannot yet confirm how Antigravity handles it. To avoid changing when the Skill is enabled, it will not be imported this time; other selected Assets are unaffected.",
+    "import.ui.candidate.incomplete_help.antigravity_skill_trigger_file":
+        "This Skill uses a trigger setting, but OAAM cannot yet confirm how Antigravity handles it. To avoid changing when the Skill is enabled, it will not be imported this time. Open {path} below to review it; other selected Assets are unaffected.",
+    "import.ui.inspector.actions": "File preview actions",
+    "import.ui.inspector.close": "Close side preview",
+    "import.ui.inspector.close_file": "Close {path}",
+    "import.ui.inspector.empty": "Choose a scanned file to preview it here.",
+    "import.ui.inspector.enable_wrap": "Wrap long lines",
+    "import.ui.inspector.files": "Files in this Asset",
+    "import.ui.inspector.disable_wrap": "Keep lines unwrapped",
+    "import.ui.inspector.format_json": "Format JSON",
+    "import.ui.inspector.hide": "Hide side preview",
+    "import.ui.inspector.hide_files": "Hide file list",
+    "import.ui.inspector.label": "Scanned file preview",
+    "import.ui.inspector.json_invalid": "Invalid JSON",
+    "import.ui.inspector.open_files": "Open files",
+    "import.ui.inspector.reveal": "Open containing folder",
+    "import.ui.inspector.reveal_complete": "Opened the containing folder in File Explorer.",
+    "import.ui.inspector.reveal_failed": "The containing folder could not be opened. Scan again and retry.",
+    "import.ui.inspector.render_markdown": "Preview Markdown",
+    "import.ui.inspector.rendered_markdown": "Rendered Markdown preview",
+    "import.ui.inspector.resize": "Resize file preview",
+    "import.ui.inspector.show": "Show side preview",
+    "import.ui.inspector.show_files": "Show file list",
+    "import.ui.inspector.show_json_source": "Show JSON source",
+    "import.ui.inspector.show_markdown_source": "Show Markdown source",
+    "import.ui.inspector.source_with_lines": "File source with line numbers",
+    "import.ui.inspector.title": "File preview",
+    "import.ui.existing_candidates.summary": "Already in OAAM · {count}",
+    "import.ui.read_notes.copy":
+        "Readable locations were processed automatically. Check these notes only if an expected Asset is missing.",
+    "import.ui.read_notes.summary": "Scan notes · {count}",
+} as const;
+
+export const GERMAN_DESKTOP_IMPORT_PREVIEW_MESSAGES = {
+    "import.ui.candidate.incomplete_help":
+        "Dieses Asset enthält Einstellungen, die OAAM noch nicht erhalten kann. Damit sich sein Verhalten nicht ändert, wird es diesmal nicht importiert. Öffnen Sie die Datei unten, um es zu prüfen; andere ausgewählte Assets sind nicht betroffen.",
+    "import.ui.candidate.incomplete_help_file":
+        "Dieses Asset enthält Einstellungen, die OAAM noch nicht erhalten kann. Damit sich sein Verhalten nicht ändert, wird es diesmal nicht importiert. Öffnen Sie unten {path}, um es zu prüfen; andere ausgewählte Assets sind nicht betroffen.",
+    "import.ui.candidate.incomplete_help.antigravity_skill_trigger":
+        "Dieser Skill verwendet eine trigger-Einstellung, doch OAAM kann noch nicht bestätigen, wie Antigravity sie verarbeitet. Damit sich der Aktivierungszeitpunkt nicht ändert, wird der Skill diesmal nicht importiert; andere ausgewählte Assets sind nicht betroffen.",
+    "import.ui.candidate.incomplete_help.antigravity_skill_trigger_file":
+        "Dieser Skill verwendet eine trigger-Einstellung, doch OAAM kann noch nicht bestätigen, wie Antigravity sie verarbeitet. Damit sich der Aktivierungszeitpunkt nicht ändert, wird der Skill diesmal nicht importiert. Öffnen Sie unten {path}, um ihn zu prüfen; andere ausgewählte Assets sind nicht betroffen.",
+    "import.ui.inspector.actions": "Aktionen für Dateivorschau",
+    "import.ui.inspector.close": "Seitliche Vorschau schließen",
+    "import.ui.inspector.close_file": "{path} schließen",
+    "import.ui.inspector.empty": "Wählen Sie eine gefundene Datei aus, um sie hier anzuzeigen.",
+    "import.ui.inspector.enable_wrap": "Lange Zeilen umbrechen",
+    "import.ui.inspector.files": "Dateien in diesem Asset",
+    "import.ui.inspector.disable_wrap": "Zeilen nicht umbrechen",
+    "import.ui.inspector.format_json": "JSON formatieren",
+    "import.ui.inspector.hide": "Seitliche Vorschau ausblenden",
+    "import.ui.inspector.hide_files": "Dateiliste ausblenden",
+    "import.ui.inspector.label": "Vorschau gefundener Dateien",
+    "import.ui.inspector.json_invalid": "Ungültiges JSON",
+    "import.ui.inspector.open_files": "Geöffnete Dateien",
+    "import.ui.inspector.reveal": "Enthaltenden Ordner öffnen",
+    "import.ui.inspector.reveal_complete": "Der enthaltende Ordner wurde im Datei-Explorer geöffnet.",
+    "import.ui.inspector.reveal_failed": "Der enthaltende Ordner konnte nicht geöffnet werden. Scannen Sie erneut.",
+    "import.ui.inspector.render_markdown": "Markdown-Vorschau",
+    "import.ui.inspector.rendered_markdown": "Gerenderte Markdown-Vorschau",
+    "import.ui.inspector.resize": "Dateivorschau vergrößern oder verkleinern",
+    "import.ui.inspector.show": "Seitliche Vorschau anzeigen",
+    "import.ui.inspector.show_files": "Dateiliste anzeigen",
+    "import.ui.inspector.show_json_source": "JSON-Quelltext anzeigen",
+    "import.ui.inspector.show_markdown_source": "Markdown-Quelltext anzeigen",
+    "import.ui.inspector.source_with_lines": "Dateiquelltext mit Zeilennummern",
+    "import.ui.inspector.title": "Dateivorschau",
+    "import.ui.existing_candidates.summary": "Bereits in OAAM · {count}",
+    "import.ui.read_notes.copy":
+        "Lesbare Orte wurden automatisch verarbeitet. Prüfen Sie diese Hinweise nur, wenn ein erwartetes Asset fehlt.",
+    "import.ui.read_notes.summary": "Scan-Hinweise · {count}",
+} as const;
+
+export const JAPANESE_DESKTOP_IMPORT_PREVIEW_MESSAGES = {
+    "import.ui.candidate.incomplete_help":
+        "この Asset には OAAM がまだ保持できない設定があります。動作が変わらないよう、今回はインポートしません。下のファイルを開いて確認できます。他の選択済み Asset には影響しません。",
+    "import.ui.candidate.incomplete_help_file":
+        "この Asset には OAAM がまだ保持できない設定があります。動作が変わらないよう、今回はインポートしません。下の {path} を開いて確認できます。他の選択済み Asset には影響しません。",
+    "import.ui.candidate.incomplete_help.antigravity_skill_trigger":
+        "この Skill は trigger 設定を使用していますが、Antigravity がどう扱うかを OAAM はまだ確認できません。有効になる条件を変えないため、今回はインポートしません。他の選択済み Asset には影響しません。",
+    "import.ui.candidate.incomplete_help.antigravity_skill_trigger_file":
+        "この Skill は trigger 設定を使用していますが、Antigravity がどう扱うかを OAAM はまだ確認できません。有効になる条件を変えないため、今回はインポートしません。下の {path} を開いて確認できます。他の選択済み Asset には影響しません。",
+    "import.ui.inspector.actions": "ファイルプレビュー操作",
+    "import.ui.inspector.close": "右側のプレビューを閉じる",
+    "import.ui.inspector.close_file": "{path} を閉じる",
+    "import.ui.inspector.empty": "スキャンで見つかったファイルを選ぶと、ここに表示されます。",
+    "import.ui.inspector.enable_wrap": "長い行を折り返す",
+    "import.ui.inspector.files": "この Asset のファイル",
+    "import.ui.inspector.disable_wrap": "行を折り返さない",
+    "import.ui.inspector.format_json": "JSON を整形",
+    "import.ui.inspector.hide": "右側のプレビューを隠す",
+    "import.ui.inspector.hide_files": "ファイル一覧を隠す",
+    "import.ui.inspector.label": "スキャンしたファイルのプレビュー",
+    "import.ui.inspector.json_invalid": "無効な JSON",
+    "import.ui.inspector.open_files": "開いているファイル",
+    "import.ui.inspector.reveal": "保存先フォルダーを開く",
+    "import.ui.inspector.reveal_complete": "保存先フォルダーをファイル エクスプローラーで開きました。",
+    "import.ui.inspector.reveal_failed": "保存先フォルダーを開けませんでした。再スキャンしてから再試行してください。",
+    "import.ui.inspector.render_markdown": "Markdown をプレビュー",
+    "import.ui.inspector.rendered_markdown": "レンダリングした Markdown プレビュー",
+    "import.ui.inspector.resize": "ファイルプレビューの幅を変更",
+    "import.ui.inspector.show": "右側のプレビューを表示する",
+    "import.ui.inspector.show_files": "ファイル一覧を表示する",
+    "import.ui.inspector.show_json_source": "JSON ソースを表示",
+    "import.ui.inspector.show_markdown_source": "Markdown ソースを表示",
+    "import.ui.inspector.source_with_lines": "行番号付きファイルソース",
+    "import.ui.inspector.title": "ファイルプレビュー",
+    "import.ui.existing_candidates.summary": "OAAM に登録済み · {count}",
+    "import.ui.read_notes.copy":
+        "読み取れた場所は自動的に処理されました。想定した Asset が見つからない場合だけ、この説明を確認してください。",
+    "import.ui.read_notes.summary": "スキャンの説明 · {count}",
+} as const;
+
+export const SIMPLIFIED_CHINESE_DESKTOP_IMPORT_PREVIEW_MESSAGES = {
+    "import.ui.candidate.incomplete_help":
+        "这个资产包含 OAAM 暂时无法保留的设置。为避免导入后改变它的行为，本次不会导入；你可以打开下方文件检查，其他已选资产不受影响。",
+    "import.ui.candidate.incomplete_help_file":
+        "这个资产包含 OAAM 暂时无法保留的设置。为避免导入后改变它的行为，本次不会导入。你可以打开下方的 {path} 检查；其他已选资产不受影响。",
+    "import.ui.candidate.incomplete_help.antigravity_skill_trigger":
+        "这个 Skill 使用了 trigger 设置，但 OAAM 目前无法确认 Antigravity 会如何处理它。为避免改变这个 Skill 的启用方式，本次不会导入；其他已选资产不受影响。",
+    "import.ui.candidate.incomplete_help.antigravity_skill_trigger_file":
+        "这个 Skill 使用了 trigger 设置，但 OAAM 目前无法确认 Antigravity 会如何处理它。为避免改变这个 Skill 的启用方式，本次不会导入。你可以打开下方的 {path} 检查；其他已选资产不受影响。",
+    "import.ui.inspector.actions": "文件预览操作",
+    "import.ui.inspector.close": "关闭右侧预览",
+    "import.ui.inspector.close_file": "关闭 {path}",
+    "import.ui.inspector.empty": "选择一个扫描到的文件即可在这里预览。",
+    "import.ui.inspector.enable_wrap": "自动折行",
+    "import.ui.inspector.files": "此资产的文件",
+    "import.ui.inspector.disable_wrap": "取消折行",
+    "import.ui.inspector.format_json": "格式化 JSON",
+    "import.ui.inspector.hide": "隐藏右侧预览",
+    "import.ui.inspector.hide_files": "隐藏文件列表",
+    "import.ui.inspector.label": "扫描文件预览",
+    "import.ui.inspector.json_invalid": "JSON 格式不完整",
+    "import.ui.inspector.open_files": "已打开的文件",
+    "import.ui.inspector.reveal": "在文件资源管理器中打开所在文件夹",
+    "import.ui.inspector.reveal_complete": "已在文件资源管理器中打开所在文件夹。",
+    "import.ui.inspector.reveal_failed": "无法打开所在文件夹。请重新扫描后再试。",
+    "import.ui.inspector.render_markdown": "预览 Markdown",
+    "import.ui.inspector.rendered_markdown": "Markdown 渲染预览",
+    "import.ui.inspector.resize": "调整文件预览宽度",
+    "import.ui.inspector.show": "显示右侧预览",
+    "import.ui.inspector.show_files": "显示文件列表",
+    "import.ui.inspector.show_json_source": "显示 JSON 原文",
+    "import.ui.inspector.show_markdown_source": "显示 Markdown 源码",
+    "import.ui.inspector.source_with_lines": "带行号的文件源码",
+    "import.ui.inspector.title": "文件预览",
+    "import.ui.existing_candidates.summary": "已有对应资产 · {count}",
+    "import.ui.read_notes.copy": "可读取的位置已经自动处理。只有缺少预期资产时，才需要查看这些说明。",
+    "import.ui.read_notes.summary": "扫描说明 · {count}",
+} as const;

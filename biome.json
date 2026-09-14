@@ -1,0 +1,67 @@
+{
+    "$schema": "https://biomejs.dev/schemas/2.5.1/schema.json",
+    "formatter": {
+        "enabled": true,
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineWidth": 130
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "double",
+            "trailingCommas": "all",
+            "semicolons": "always"
+        }
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "preset": "recommended"
+        }
+    },
+    "files": {
+        "includes": ["**", "!**/node_modules", "!**/dist", "!**/coverage", "!**/*.md", "!**/schema.sql", "!**/package-lock.json"]
+    },
+    "overrides": [
+        {
+            "includes": ["packages/adapter/**"],
+            "linter": {
+                "rules": {
+                    "style": {
+                        "useExportType": "off"
+                    },
+                    "suspicious": {
+                        "noConfusingLabels": "off"
+                    }
+                }
+            }
+        },
+        {
+            "includes": ["packages/core/tests/**"],
+            "linter": {
+                "rules": {
+                    "suspicious": {
+                        "noAssignInExpressions": "off"
+                    },
+                    "style": {
+                        "noNonNullAssertion": "off"
+                    },
+                    "correctness": {
+                        "noUnusedImports": "off",
+                        "noUnusedVariables": "off"
+                    }
+                }
+            }
+        },
+        {
+            "includes": ["tests/architecture/**"],
+            "linter": {
+                "rules": {
+                    "suspicious": {
+                        "noAssignInExpressions": "off"
+                    }
+                }
+            }
+        }
+    ]
+}

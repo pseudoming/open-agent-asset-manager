@@ -1,0 +1,82 @@
+name: Source checks and Desktop candidates
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22.14.0'
+          cache: npm
+      - name: Install the Linux toolchain and display dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y g++-11 xvfb xauth libgtk-3-0 libnss3 libasound2 libgbm1
+      - run: npm ci
+      - run: npm run verify
+  platforms:
+    name: Source contracts (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-26]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22.14.0'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test:architecture
+      - run: >-
+          npm exec --workspace @oaam/shared -- vitest run
+          tests/paths/win32
+          tests/paths/physical-access-paths.test.ts
+          tests/paths/selected-wsl-path-projection.test.ts
+          tests/paths/unix-like/paths.test.ts
+          tests/paths/unix-like/path-environment.test.ts
+          tests/paths/unix-like/is-wsl-catch.test.ts
+  packages:
+    name: Desktop package candidates
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
+    needs: [verify, platforms]
+    uses: ./.github/workflows/desktop-packages.yml
+  release-draft:
+    name: Prepare a Release draft for candidate review
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    needs: [packages]
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22.14.0'
+          cache: npm
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: desktop-*-test-${{ github.sha }}
+          path: ${{ runner.temp }}/oaam-release-input
+          merge-multiple: true
+          digest-mismatch: error
+      - run: npm ci --ignore-scripts
+      - name: Verify both downloads and create the draft
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: npm run release:draft -- --artifacts "$RUNNER_TEMP/oaam-release-input" --execute

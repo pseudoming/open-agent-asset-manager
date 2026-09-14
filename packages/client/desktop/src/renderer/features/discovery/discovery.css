@@ -1,0 +1,701 @@
+.discovery-tool-result-list,
+.source-review-list {
+    display: grid;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.discovery-tool-result-list {
+    gap: 0.5rem;
+}
+
+.discovery-probe-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.discovery-tool-result-list > li {
+    display: grid;
+    border-radius: var(--radius-control);
+    background: var(--color-canvas);
+    gap: 0.45rem;
+    padding: 0.65rem;
+}
+
+:where(.environment-result-list) .workbench-disclosure-summary {
+    display: flex;
+    min-width: 0;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.source-review-list {
+    gap: 0.55rem;
+    margin-block: 0.8rem;
+}
+
+.source-review-card {
+    --source-review-path-color: var(--color-text);
+
+    display: grid;
+    border: 1px solid transparent;
+    border-radius: var(--radius-control);
+    background: var(--color-surface-raised);
+    gap: 0.42rem;
+    padding: 0.62rem 0.7rem;
+}
+
+.source-review-card[data-oaam-source-state="ignored"] {
+    --source-review-path-color: var(--color-text-secondary);
+
+    border-color: var(--color-border);
+    background: var(--color-canvas);
+    padding-block: 0.45rem;
+}
+
+:where(.source-review-card[data-oaam-source-state="ignored"]) .source-review-heading {
+    align-items: center;
+}
+
+:where(.source-review-card[data-oaam-source-state="ignored"]) :where(.source-review-heading) > .source-review-heading-copy {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem 0.65rem;
+}
+
+.source-review-heading {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.source-review-heading-copy {
+    display: flex;
+    min-width: 0;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 0.65rem;
+}
+
+.source-review-heading-copy > strong {
+    min-width: 0;
+}
+
+.source-review-meta-line {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.2rem 0.55rem;
+}
+
+.source-review-meta-line > small {
+    min-width: 0;
+}
+
+.source-metadata-tags {
+    display: inline-flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.source-review-heading code {
+    overflow-wrap: anywhere;
+    color: var(--source-review-path-color);
+}
+
+.source-review-heading small,
+.source-relationship small,
+.source-review-card > small {
+    color: var(--color-text-secondary);
+    font-size: 12px;
+}
+
+.source-ignored-effect {
+    margin-top: -0.1rem;
+}
+
+.source-relationship-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.32rem;
+}
+
+.source-relationship {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.source-relationship .workbench-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    text-transform: none;
+}
+
+.source-review-decisions {
+    display: grid;
+    min-width: 0;
+    align-items: start;
+    gap: 0.45rem 0.75rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding-top: 0.2rem;
+}
+
+.source-review-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.7rem;
+}
+
+.source-review-decisions[data-oaam-source-control-layout="actions_only"] .source-review-actions {
+    grid-column: 1 / -1;
+}
+
+.source-read-unavailable {
+    align-self: center;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+}
+
+.source-watch-destination {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    padding-block: 0.1rem;
+}
+
+.source-destination-control {
+    display: grid;
+    min-width: 0;
+    gap: 0.4rem;
+}
+
+.source-destination-switch {
+    display: grid;
+    width: min(11.5rem, 100%);
+    min-width: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: var(--color-surface);
+    gap: 0.1875rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0.1875rem;
+}
+
+.source-destination-switch .workbench-radio-button {
+    --source-destination-hover-background: var(--color-surface-hover);
+    --source-destination-hover-color: var(--color-text);
+
+    display: inline-flex;
+    min-height: 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: calc(var(--radius-control) - 2px);
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    padding: 0.35rem 0.65rem;
+}
+
+.source-destination-switch .workbench-radio-button[data-checked="true"] {
+    --source-destination-hover-background: var(--color-accent-soft);
+    --source-destination-hover-color: var(--color-accent-strong);
+
+    background: var(--color-accent-soft);
+    color: var(--color-accent-strong);
+    font-weight: 600;
+}
+
+.source-destination-switch .workbench-radio-button[data-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.48;
+}
+
+.source-destination-switch .workbench-radio-indicator {
+    display: none;
+}
+
+.source-destination-switch .workbench-radio-button[data-oaam-source-destination-pending="true"],
+.source-destination-switch .workbench-radio-button:hover:not([data-disabled="true"]) {
+    background: var(--source-destination-hover-background);
+    color: var(--source-destination-hover-color);
+}
+
+.source-destination-current {
+    overflow: hidden;
+    max-width: 14rem;
+    color: var(--color-text-secondary);
+    font-size: 11px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.source-project-proposal {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    border-left: 2px solid var(--color-accent-soft);
+    gap: 0.45rem 0.75rem;
+    padding: 0.35rem 0 0.35rem 0.65rem;
+}
+
+.source-project-proposal > span {
+    display: grid;
+    min-width: 0;
+    flex: 1 1 auto;
+    gap: 0.1rem;
+}
+
+.source-project-proposal > span > small {
+    color: var(--color-text-secondary);
+    font-size: 11px;
+}
+
+.source-project-proposal > .workbench-notice {
+    flex-basis: 100%;
+}
+
+.source-project-register-button[data-oaam-project-registration-state="blocked_by_other"]:disabled {
+    border-color: var(--color-border-strong);
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    cursor: default;
+    opacity: 1;
+}
+
+.discovery-project-registration-dialog {
+    width: min(34rem, 100%);
+}
+
+.discovery-project-registration-form {
+    display: grid;
+    gap: var(--space-4);
+}
+
+.discovery-project-registration-form > p {
+    margin: 0;
+}
+
+.discovery-project-registration-form input[type="text"] {
+    width: 100%;
+    min-height: 2.25rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-control);
+    background: var(--color-surface-raised);
+    color: var(--color-text);
+    padding: 0.4rem 0.55rem;
+}
+
+.discovery-project-registration-form input[type="text"]:focus-visible {
+    border-color: var(--color-accent-strong);
+    outline: 0;
+    box-shadow: none;
+}
+
+.discovery-project-registration-form > label,
+.discovery-project-registration-path {
+    display: grid;
+    gap: var(--space-2);
+}
+
+.discovery-project-registration-form > label > span,
+.discovery-project-registration-path > span {
+    color: var(--color-text-tertiary);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.discovery-project-registration-path {
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-panel);
+    background: var(--color-surface);
+}
+
+.discovery-project-registration-path code {
+    overflow-wrap: anywhere;
+}
+
+.discovery-project-registration-path button {
+    justify-self: start;
+}
+
+.discovery-project-registration-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-2);
+}
+
+.source-ignore-button {
+    width: fit-content;
+    min-height: 2rem;
+    border: 0;
+    border-radius: var(--radius-control);
+    background: transparent;
+    color: var(--color-text-tertiary);
+    font: inherit;
+    font-size: 12px;
+    padding: 0.4rem 0.75rem;
+}
+
+.source-ignore-button:hover:not(:disabled) {
+    background: var(--color-accent-soft);
+    color: var(--color-accent-strong);
+}
+
+.source-review-ignored-actions {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: 0.45rem;
+}
+
+.source-restore-button {
+    min-height: 1.75rem;
+    padding: 0.25rem 0.6rem;
+}
+
+.source-ignore-confirmation {
+    display: grid;
+    min-width: 0;
+    margin: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: var(--color-canvas);
+    gap: 0.3rem;
+    padding: 0.55rem 0.65rem;
+}
+
+.source-ignore-confirmation legend {
+    font-weight: 600;
+    padding: 0 0.2rem;
+}
+
+.source-ignore-confirmation small {
+    color: var(--color-text-secondary);
+}
+
+.source-ignore-confirmation > span {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.source-ignore-confirm-button {
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-control);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+    padding: 0.42rem 0.7rem;
+}
+
+.source-technical-details article {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.source-technical-details {
+    width: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.source-technical-details > summary {
+    width: auto;
+    min-height: 1.55rem;
+    box-sizing: border-box;
+    color: var(--color-text-tertiary);
+    font-weight: 400;
+    font-size: 12px;
+    padding: 0.15rem 0.4rem;
+}
+
+.source-technical-details[open] {
+    width: 100%;
+    flex: 1 0 100%;
+}
+
+.discovery-technical-disclosure {
+    width: auto;
+    margin: 0;
+}
+
+.discovery-technical-disclosure .workbench-disclosure-content {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.discovery-technical-disclosure > summary {
+    min-height: 1.55rem;
+    color: var(--color-text-secondary);
+    font-weight: 400;
+    font-size: 12px;
+    padding: 0.15rem 0.4rem;
+}
+
+.discovery-tool-meta-line,
+.discovery-probe-issue-owner {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem 0.65rem;
+}
+
+.discovery-tool-meta-line > small {
+    color: var(--color-text-secondary);
+}
+
+.discovery-tool-meta-line > .discovery-technical-disclosure[open],
+.discovery-probe-issue-owner > .discovery-technical-disclosure[open] {
+    width: 100%;
+    flex: 1 0 100%;
+}
+
+.source-technical-details article + article {
+    margin-top: 0.65rem;
+}
+
+.discovery-probe-issues {
+    background: transparent;
+    color: var(--color-text-tertiary);
+    margin-block: 0.8rem;
+}
+
+.discovery-probe-issues > summary {
+    min-height: 1.9rem;
+    padding: 0.3rem 0.45rem;
+}
+
+.discovery-probe-issue-summary {
+    display: flex;
+    min-width: 0;
+    align-items: baseline;
+    gap: 0.55rem;
+}
+
+.discovery-probe-issue-summary > span {
+    flex: 0 0 auto;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.discovery-probe-issue-summary small,
+.discovery-probe-issue-paths span {
+    color: var(--color-text-secondary);
+    font-size: 12px;
+}
+
+.discovery-probe-issues :where(ul) {
+    display: grid;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.discovery-probe-issue-list {
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: var(--color-surface);
+}
+
+.discovery-probe-issue {
+    display: grid;
+    gap: 0.45rem;
+    padding: 0.6rem 0.7rem;
+}
+
+.discovery-probe-issue + .discovery-probe-issue {
+    border-top: 1px solid var(--color-border);
+}
+
+.discovery-probe-issue-scope,
+.discovery-runtime-diagnostic-scope {
+    display: grid;
+    min-width: 0;
+    gap: 0.2rem;
+}
+
+.discovery-probe-issue-scope > small,
+.discovery-runtime-diagnostic-scope > .source-row-heading small {
+    color: var(--color-text-secondary);
+    font-size: 12px;
+}
+
+.discovery-runtime-diagnostic-scope {
+    border-top: 1px solid var(--color-border);
+    margin-top: 0.55rem;
+    padding-top: 0.55rem;
+}
+
+.discovery-probe-issue-paths {
+    gap: 0.3rem;
+}
+
+.discovery-probe-issue-paths > li {
+    display: grid;
+    min-width: 0;
+    align-items: baseline;
+    gap: 0.25rem;
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.discovery-probe-issue-paths > li[data-oaam-diagnostic-group-start="true"]:not(:first-child) {
+    margin-top: 0.5rem;
+}
+
+.discovery-probe-overall-issue {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.discovery-probe-overall-issue > strong {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.discovery-probe-issue-path {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.discovery-probe-issue-path code {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.discovery-probe-issue-path .workbench-icon-button {
+    width: 1.75rem;
+    min-width: 1.75rem;
+    min-height: 1.75rem;
+    flex: 0 0 1.75rem;
+    padding: 0;
+}
+
+.discovery-project-review {
+    display: grid;
+    border-top: 1px solid var(--color-border);
+    gap: 0.7rem;
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+}
+
+.discovery-project-review h3,
+.discovery-project-review p {
+    margin: 0;
+}
+
+.discovery-project-review p,
+.discovery-project-review > small,
+.discovery-project-review li > small {
+    color: var(--color-text-secondary);
+    font-size: 12px;
+}
+
+.discovery-project-review ul {
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-panel);
+    background: var(--color-surface);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.discovery-project-review li {
+    display: grid;
+    min-height: 3.4rem;
+    align-items: center;
+    gap: 0.65rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 0.55rem 0.7rem;
+}
+
+.discovery-project-review li + li {
+    border-top: 1px solid var(--color-border);
+}
+
+.discovery-project-review li > span:first-child {
+    display: grid;
+    min-width: 0;
+    gap: 0.2rem;
+}
+
+.discovery-project-review code {
+    overflow: hidden;
+    color: var(--color-text-secondary);
+    font-size: 11px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.discovery-project-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.discovery-project-review .workbench-notice {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 42rem) {
+    .source-review-heading,
+    .discovery-snapshot-summary {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .source-review-decisions,
+    .discovery-probe-issue-paths > li {
+        grid-template-columns: 1fr;
+    }
+
+    .source-review-actions,
+    .source-review-decisions > .source-ignore-button {
+        justify-self: end;
+    }
+
+    .source-watch-destination {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .source-destination-switch {
+        width: 100%;
+    }
+
+    .discovery-project-review li {
+        align-items: stretch;
+        grid-template-columns: 1fr;
+    }
+}

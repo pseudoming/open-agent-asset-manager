@@ -1,0 +1,83 @@
+{
+    "name": "@oaam/shared",
+    "version": "0.1.0",
+    "description": "OAAM Shared - target-built physical filesystem and path mechanisms",
+    "license": "Apache-2.0",
+    "type": "commonjs",
+    "main": "./dist/paths/unix-like/filesystem-target-entry.js",
+    "types": "./dist/paths/unix-like/filesystem-target-entry.d.ts",
+    "exports": {
+        "./filesystem": {
+            "types": "./dist/paths/unix-like/filesystem-target-entry.d.ts",
+            "require": "./dist/paths/unix-like/filesystem-target-entry.js",
+            "default": "./dist/paths/unix-like/filesystem-target-entry.js"
+        },
+        "./paths": {
+            "types": "./dist/paths/unix-like/path-environment.d.ts",
+            "require": "./dist/paths/unix-like/path-environment.js",
+            "default": "./dist/paths/unix-like/path-environment.js"
+        }
+    },
+    "typesVersions": {
+        "*": {
+            "filesystem": [
+                "dist/paths/unix-like/filesystem-target-entry.d.ts"
+            ],
+            "paths": [
+                "dist/paths/unix-like/path-environment.d.ts"
+            ]
+        }
+    },
+    "files": [
+        "dist/filesystem",
+        "dist/paths/committed-sqlite-snapshot.js",
+        "dist/paths/committed-sqlite-snapshot.js.map",
+        "dist/paths/committed-sqlite-snapshot.d.ts",
+        "dist/paths/committed-sqlite-snapshot.d.ts.map",
+        "dist/paths/directory-member-observation.js",
+        "dist/paths/directory-member-observation.js.map",
+        "dist/paths/directory-member-observation.d.ts",
+        "dist/paths/directory-member-observation.d.ts.map",
+        "dist/paths/linux-mutation-framing.js",
+        "dist/paths/linux-mutation-framing.js.map",
+        "dist/paths/linux-mutation-framing.d.ts",
+        "dist/paths/linux-mutation-framing.d.ts.map",
+        "dist/paths/packaged-worker-path.js",
+        "dist/paths/packaged-worker-path.js.map",
+        "dist/paths/packaged-worker-path.d.ts",
+        "dist/paths/packaged-worker-path.d.ts.map",
+        "dist/paths/path-environment.js",
+        "dist/paths/path-environment.js.map",
+        "dist/paths/path-environment.d.ts",
+        "dist/paths/path-environment.d.ts.map",
+        "dist/paths/physical-access-paths.js",
+        "dist/paths/physical-access-paths.js.map",
+        "dist/paths/physical-access-paths.d.ts",
+        "dist/paths/physical-access-paths.d.ts.map",
+        "dist/paths/selected-wsl-path-projection.js",
+        "dist/paths/selected-wsl-path-projection.js.map",
+        "dist/paths/selected-wsl-path-projection.d.ts",
+        "dist/paths/selected-wsl-path-projection.d.ts.map",
+        "dist/paths/wsl-distro-discovery.js",
+        "dist/paths/wsl-distro-discovery.js.map",
+        "dist/paths/wsl-distro-discovery.d.ts",
+        "dist/paths/wsl-distro-discovery.d.ts.map",
+        "dist/paths/unix-like"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "typecheck": "tsc --noEmit",
+        "test": "vitest run",
+        "test:coverage": "vitest run --coverage"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "typescript": "^5.5.0",
+        "vitest": "^2.0.0",
+        "@vitest/coverage-istanbul": "^2.0.0",
+        "@types/node": "^22.0.0"
+    },
+    "engines": {
+        "node": ">=22.0.0"
+    }
+}

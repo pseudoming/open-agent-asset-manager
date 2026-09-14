@@ -1,0 +1,4 @@
+{
+    "main": "../dist/restricted-probe.js",
+    "types": "../dist/restricted-probe.d.ts"
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>OAAM application icon</title>
+  <!-- Reviewed source for the packaged PNG and 16/24/32/48/64-pixel Windows ICO derivatives. -->
+  <rect x="4" y="4" width="56" height="56" rx="15" fill="#c86636"/>
+  <path
+    d="M17 38c0-11 6-18 15-18s15 7 15 18"
+    fill="none"
+    stroke="#fffaf5"
+    stroke-linecap="round"
+    stroke-width="7"
+  />
+  <circle cx="17" cy="41" r="5" fill="#fffaf5"/>
+  <circle cx="47" cy="41" r="5" fill="#fffaf5"/>
+</svg>

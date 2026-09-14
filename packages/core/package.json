@@ -1,0 +1,38 @@
+{
+    "name": "@oaam/core",
+    "version": "0.1.0",
+    "description": "Open Agent Asset Manager - Core (abstract models, schemas, interfaces)",
+    "license": "Apache-2.0",
+    "type": "commonjs",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist",
+        "adapter-spi/package.json",
+        "restricted-operations/package.json",
+        "schema/schema.sql"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "typecheck": "tsc --noEmit",
+        "test": "vitest run",
+        "test:coverage": "vitest run --coverage",
+        "test:watch": "vitest"
+    },
+    "devDependencies": {
+        "@types/node": "^22.0.0",
+        "@vitest/coverage-istanbul": "^2.1.9",
+        "@vitest/coverage-v8": "^2.1.9",
+        "typescript": "^5.5.0",
+        "vitest": "^2.0.0"
+    },
+    "engines": {
+        "node": ">=22.0.0"
+    },
+    "dependencies": {
+        "@oaam/shared": "^0.1.0",
+        "@types/better-sqlite3": "^7.6.13",
+        "@zip.js/zip.js": "^2.8.33",
+        "better-sqlite3": "^12.11.1"
+    }
+}

@@ -1,0 +1,158 @@
+.diagnostics-workspace,
+.diagnostics-group,
+.diagnostics-support-review {
+    display: grid;
+    gap: 14px;
+}
+
+.diagnostics-group {
+    padding-top: 18px;
+    border-top: 1px solid var(--color-border);
+}
+
+.diagnostics-group:first-of-type {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.diagnostics-group > button {
+    justify-self: start;
+}
+
+.diagnostics-group h3,
+.diagnostics-group p {
+    margin: 0;
+}
+
+.diagnostics-heading-line,
+.diagnostics-actions,
+.diagnostics-support-review li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.diagnostics-heading-line {
+    justify-content: space-between;
+}
+
+.diagnostics-actions {
+    flex-wrap: wrap;
+}
+
+.diagnostics-actions label,
+.diagnostics-confirmation,
+.diagnostics-select-field {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.diagnostics-select-field {
+    min-width: 220px;
+    flex-wrap: wrap;
+}
+
+.diagnostics-select-field > span {
+    flex: 0 0 auto;
+}
+
+.diagnostics-select-field > .workbench-select {
+    width: auto;
+    min-width: 10rem;
+    flex: 1;
+}
+
+.diagnostics-privacy-copy {
+    color: var(--color-text-secondary);
+    max-width: 70ch;
+}
+
+.diagnostics-destructive-action {
+    padding-top: 0.5rem;
+}
+
+.diagnostics-form-grid,
+.diagnostics-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.diagnostics-form-grid label,
+.diagnostics-facts div {
+    display: grid;
+    gap: 6px;
+}
+
+.diagnostics-form-grid input[type="number"] {
+    min-height: 36px;
+    padding: 6px 10px;
+    color: var(--color-text);
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+}
+
+.diagnostics-facts {
+    margin: 0;
+}
+
+.diagnostics-facts dt {
+    color: var(--color-text-secondary);
+    font-size: 0.78rem;
+}
+
+.diagnostics-facts dd {
+    margin: 0;
+    font-weight: 600;
+}
+
+.diagnostics-facts .diagnostics-support-hash {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 8px;
+}
+
+.diagnostics-support-hash code {
+    min-width: 0;
+    flex: 1;
+}
+
+.diagnostics-support-hash-feedback {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.diagnostics-support-review ul {
+    display: grid;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.diagnostics-support-review li {
+    justify-content: space-between;
+}
+
+.diagnostics-support-review li > span:first-child {
+    display: grid;
+    gap: 3px;
+}
+
+.diagnostics-support-review code {
+    overflow-wrap: anywhere;
+}
+
+.diagnostics-workspace a.library-secondary-button {
+    text-decoration: none;
+}
+
+.diagnostics-danger-button {
+    color: var(--color-danger);
+    background: var(--color-danger-soft);
+    border-color: color-mix(in srgb, var(--color-danger) 45%, transparent);
+}

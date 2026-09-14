@@ -1,0 +1,315 @@
+.source-sidebar-content {
+    display: grid;
+    min-height: 0;
+    grid-template-rows: auto auto minmax(0, 1fr);
+    gap: 0.7rem;
+    padding: 0.75rem;
+}
+
+.source-task-title {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.source-sidebar-search {
+    display: grid;
+    color: var(--color-text-tertiary);
+    font-size: 11px;
+    gap: 0.3rem;
+}
+
+.source-sidebar-search input {
+    width: 100%;
+    min-height: 2rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-control);
+    background: var(--color-surface-raised);
+    color: var(--color-text);
+    padding: 0.35rem 0.55rem;
+}
+
+.source-sidebar-search input:focus-visible {
+    border-color: var(--color-focus);
+    outline: 0;
+    box-shadow: var(--focus-ring);
+}
+
+.source-tree {
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.source-tree :where(ul) {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    gap: 2px;
+    list-style: none;
+}
+
+.source-tree :where(ul ul) {
+    margin-left: 0.8rem;
+    padding-left: 0.5rem;
+}
+
+.source-tree button {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    min-height: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    border-color: transparent;
+    background: transparent;
+    color: var(--color-text-secondary);
+    gap: 0.45rem;
+    padding: 0.35rem 0.45rem;
+    text-align: left;
+}
+
+.source-tree button:hover {
+    border-color: transparent;
+    background: var(--color-surface-hover);
+    color: var(--color-text);
+}
+
+.source-tree button[aria-current="page"] {
+    background: var(--color-surface-raised);
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.source-tree-environment-row {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+}
+
+.source-tree .source-tree-disclosure {
+    width: 1.75rem;
+    min-width: 1.75rem;
+    min-height: 1.75rem;
+    flex: 0 0 1.75rem;
+    justify-content: center;
+    padding: 0;
+}
+
+.source-tree-environment-row .source-tree-environment {
+    flex: 1;
+}
+
+.source-tree-root svg {
+    flex: 0 0 auto;
+}
+
+.source-tree-root strong {
+    min-width: 0;
+    flex: 1;
+}
+
+.source-tree-root span,
+.source-tree-environment span {
+    color: var(--color-text-tertiary);
+    font-size: 11px;
+}
+
+.source-tree-location-copy {
+    display: grid;
+    min-width: 0;
+    flex: 1;
+}
+
+.source-tree-location-copy strong,
+.source-tree-location-copy small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.source-tree-location-copy small {
+    color: var(--color-text-tertiary);
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.source-library-main {
+    display: grid;
+    align-content: start;
+    justify-items: center;
+    gap: 0.75rem;
+}
+
+.source-library-main > * {
+    width: min(100%, 64rem);
+}
+
+.source-library-groups {
+    display: grid;
+    width: min(100%, 56rem);
+    align-items: start;
+    overflow: hidden;
+    border-radius: var(--radius-panel);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-low);
+    gap: 0;
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.source-library-group {
+    width: 100%;
+    min-width: 0;
+    background: transparent;
+}
+
+.source-library-group + .source-library-group {
+    border-top: 1px solid var(--color-border);
+}
+
+.source-library-detail {
+    width: min(100%, 56rem);
+    border-radius: var(--radius-panel);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-low);
+}
+
+.source-library-group > header,
+.source-library-detail > header {
+    padding: 0.7rem 0.9rem 0.45rem;
+}
+
+.source-library-group h2,
+.source-library-group p,
+.source-library-detail h2,
+.source-library-detail p {
+    margin: 0;
+}
+
+.source-library-group p {
+    color: var(--color-text-tertiary);
+    font-size: 11px;
+}
+
+.source-library-column-headings {
+    display: grid;
+    color: var(--color-text-tertiary);
+    font-size: 10px;
+    gap: 1.25rem;
+    grid-template-columns: minmax(12rem, 1.4fr) minmax(8.5rem, 0.8fr) minmax(11rem, 1fr);
+    padding: 0.25rem 0.95rem;
+}
+
+.source-library-rows {
+    display: grid;
+    gap: 2px;
+    padding: 0 0.4rem 0.5rem;
+}
+
+.source-library-row {
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    min-height: 3.4rem;
+    align-items: center;
+    border-color: transparent;
+    background: transparent;
+    color: var(--color-text);
+    column-gap: 1.25rem;
+    grid-template-columns: minmax(12rem, 1.4fr) minmax(8.5rem, 0.8fr) minmax(11rem, 1fr);
+    row-gap: 0.35rem;
+    padding: 0.55rem;
+    text-align: left;
+}
+
+button.source-library-row:hover:not(:disabled) {
+    border-color: transparent;
+    background: var(--color-surface-hover);
+    color: var(--color-text);
+}
+
+.source-library-row-main,
+.source-library-row-tools,
+.source-library-row-meta {
+    display: grid;
+    min-width: 0;
+}
+
+.source-library-row-main {
+    flex: 1;
+}
+
+.source-library-row-main > span {
+    overflow: hidden;
+    color: var(--color-text-tertiary);
+    font-size: 11px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.source-library-row-tools,
+.source-library-row-meta {
+    justify-items: start;
+    color: var(--color-text-secondary);
+    font-size: 11px;
+}
+
+.source-library-detail {
+    padding-bottom: 0.8rem;
+}
+
+.source-library-detail dl {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0.2rem 0.9rem 0.7rem;
+}
+
+.source-library-detail dl > div {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 8rem minmax(0, 1fr);
+}
+
+.source-library-detail dt {
+    color: var(--color-text-tertiary);
+}
+
+.source-library-detail dd {
+    display: grid;
+    min-width: 0;
+    gap: 0.2rem;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.source-library-detail > details {
+    margin: 0 0.9rem;
+}
+
+.source-library-technical-record {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.source-library-empty {
+    width: min(100%, 42rem);
+    margin: 3rem auto 0;
+}
+
+@media (max-width: 720px) {
+    .source-library-column-headings {
+        display: none;
+    }
+
+    .source-library-row {
+        align-items: start;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .source-library-detail dl > div {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

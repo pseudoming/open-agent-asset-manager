@@ -1,0 +1,4 @@
+{
+    "main": "../dist/restricted-operations.js",
+    "types": "../dist/restricted-operations.d.ts"
+}

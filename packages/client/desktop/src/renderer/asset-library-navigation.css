@@ -1,0 +1,192 @@
+.asset-library-sidebar-content {
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 1.1rem;
+}
+
+.asset-library-tree-region {
+    display: grid;
+    min-height: 0;
+    grid-template-rows: minmax(0, 1fr);
+}
+
+.asset-tree {
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.asset-tree-section-header {
+    display: flex;
+    min-height: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-text-tertiary);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 0.15rem 0.25rem 0.3rem 0.45rem;
+}
+
+.asset-tree :where(ul) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    margin: 0;
+    padding: 0;
+    gap: 2px;
+    list-style: none;
+}
+
+.asset-tree :where(ul ul) {
+    margin-left: 0.8rem;
+    padding-left: 0.55rem;
+}
+
+.asset-tree button {
+    border-color: transparent;
+    background: transparent;
+    color: var(--color-text-secondary);
+}
+
+.asset-tree button:hover {
+    border-color: transparent;
+    background: var(--color-surface-hover);
+    color: var(--color-text);
+}
+
+.asset-tree button[aria-current="page"] {
+    background: var(--color-surface-raised);
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.asset-tree-project-row {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: var(--radius-control);
+    gap: 2px;
+    isolation: isolate;
+    position: relative;
+}
+
+.asset-tree-project-item:hover > .asset-tree-project-row {
+    background: var(--color-surface-hover);
+}
+
+.asset-tree-project-item[data-selected="true"] > .asset-tree-project-row {
+    background: var(--color-surface-raised);
+}
+
+.asset-tree-project,
+.asset-tree-global,
+.asset-tree-kind {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    min-height: 2rem;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.45rem;
+    text-align: left;
+}
+
+.asset-tree-project,
+.asset-tree-kind {
+    flex: 1;
+}
+
+.asset-tree-project {
+    padding-right: 3.25rem;
+}
+
+.asset-tree-project:hover,
+.asset-tree-project[aria-current="page"] {
+    background: transparent;
+}
+
+.asset-tree-project-menu {
+    position: absolute;
+    z-index: 8;
+    top: 50%;
+    right: 1.15rem;
+    width: 1.75rem;
+    min-width: 1.75rem;
+    min-height: 1.75rem;
+    background: var(--color-surface-raised);
+    box-shadow: -0.45rem 0 0.55rem var(--color-surface-raised);
+    padding: 0;
+    transform: translateY(-50%);
+}
+
+.asset-tree-project-menu {
+    opacity: 0;
+    color: var(--color-text-tertiary);
+    pointer-events: none;
+    transition: opacity 120ms ease;
+}
+
+.asset-tree-project-item:hover > .asset-tree-project-row .asset-tree-project-menu,
+.asset-tree-project-item:focus-within > .asset-tree-project-row .asset-tree-project-menu {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.asset-tree-project-row .asset-tree-project-menu:hover,
+.asset-tree-project-row .asset-tree-project-menu:focus-visible {
+    background: var(--color-accent-soft);
+}
+
+.asset-tree-project-label {
+    display: inline-flex;
+    min-width: 0;
+    align-items: baseline;
+    gap: 0.4rem;
+}
+
+.asset-tree-project > .asset-tree-project-label,
+.asset-tree-global > span,
+.asset-tree-kind > span {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.asset-tree-project-label > span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.asset-tree-project small,
+.asset-tree-global small,
+.asset-tree-kind small {
+    color: var(--color-text-tertiary);
+}
+
+.asset-tree-global-row {
+    display: flex;
+    padding: 0.15rem 0.25rem 0.3rem 0.2rem;
+}
+
+.asset-tree-global {
+    width: auto;
+    min-height: 1.75rem;
+    flex: 0 1 auto;
+    padding: 0.25rem;
+}
+
+.asset-tree-global > .asset-tree-global-label {
+    display: inline-flex;
+    min-width: 0;
+    flex: 0 1 auto;
+    align-items: baseline;
+    gap: 0.4rem;
+}
+
+.asset-tree > ul .asset-tree-kinds {
+    margin-left: 0.8rem;
+    padding-left: 0.55rem;
+}

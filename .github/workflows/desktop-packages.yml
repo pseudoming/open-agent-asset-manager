@@ -1,0 +1,80 @@
+name: Desktop package candidates
+on:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  linux-package:
+    name: Linux Desktop and supporting WSL resource
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22.14.0'
+          cache: npm
+      - name: Install native build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y g++-11 make python3
+      - run: npm ci
+      - run: npm run build
+      - run: npm run package:desktop -- --output "$RUNNER_TEMP/oaam-desktop-linux"
+      - run: npm run package:wsl-resource -- --output "$RUNNER_TEMP/oaam-wsl-resource"
+      - uses: actions/upload-artifact@v7
+        with:
+          name: desktop-linux-test-${{ github.sha }}
+          path: ${{ runner.temp }}/oaam-desktop-linux/artifacts/*
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+      - uses: actions/upload-artifact@v7
+        with:
+          name: restricted-wsl-support-${{ github.sha }}
+          path: ${{ runner.temp }}/oaam-wsl-resource/artifacts/*
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+  windows-package:
+    name: Windows Desktop with matching WSL resource
+    needs: [linux-package]
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22.14.0'
+          cache: npm
+      - uses: actions/download-artifact@v8
+        with:
+          name: restricted-wsl-support-${{ github.sha }}
+          path: ${{ runner.temp }}/oaam-wsl-input
+          digest-mismatch: error
+      - run: npm ci
+      - run: npm run build
+      - name: Build, archive and verify Windows Desktop
+        shell: pwsh
+        run: |
+          $archives = @(Get-ChildItem -LiteralPath "$env:RUNNER_TEMP/oaam-wsl-input" -Filter '*.tar.gz' -File)
+          if ($archives.Count -ne 1) { throw 'Expected one matching WSL resource archive' }
+          $archive = $archives[0].FullName
+          $nodeExecutable = (Get-Command node.exe -CommandType Application | Select-Object -First 1).Source
+          $npmCli = Join-Path (Split-Path -Parent $nodeExecutable) 'node_modules/npm/bin/npm-cli.js'
+          if (!(Test-Path -LiteralPath $npmCli -PathType Leaf)) { throw 'Node installation is missing npm-cli.js' }
+          & $nodeExecutable $npmCli run package:desktop -- --output "$env:RUNNER_TEMP/oaam-desktop-windows" --wsl-archive "$archive" --wsl-manifest "$archive.manifest.json"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - uses: actions/upload-artifact@v7
+        with:
+          name: desktop-win32-test-${{ github.sha }}
+          path: ${{ runner.temp }}/oaam-desktop-windows/artifacts/*
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14

@@ -1,0 +1,301 @@
+{
+    "schemaVersion": 1,
+    "scope": "current_desktop_navigation",
+    "actions": [
+        {
+            "actionId": "workbench.navigate_history",
+            "effect": "navigate_history",
+            "identity": "exact_history_entry"
+        },
+        {
+            "actionId": "shell.open_settings",
+            "effect": "navigate_surface",
+            "identity": "settings_general"
+        },
+        {
+            "actionId": "library.open_search",
+            "effect": "open_overlay",
+            "identity": "current_library_route"
+        },
+        {
+            "actionId": "library.open_settings",
+            "effect": "navigate_surface",
+            "identity": "settings_general"
+        },
+        {
+            "actionId": "library.open_source_locations",
+            "effect": "navigate_surface",
+            "identity": "last_sources_route"
+        },
+        {
+            "actionId": "library.start_guided_import",
+            "effect": "navigate_surface",
+            "identity": "current_project_or_global"
+        },
+        {
+            "actionId": "library.open_deployments",
+            "effect": "navigate_surface",
+            "identity": "current_subject"
+        },
+        {
+            "actionId": "library.open_asset_deployment",
+            "effect": "navigate_surface",
+            "identity": "current_subject_and_asset"
+        },
+        {
+            "actionId": "sources.open_library",
+            "effect": "navigate_surface",
+            "identity": "last_library_route"
+        },
+        {
+            "actionId": "sources.open_settings",
+            "effect": "navigate_surface",
+            "identity": "settings_general"
+        },
+        {
+            "actionId": "sources.start_guided_import",
+            "effect": "navigate_surface",
+            "identity": "global_import"
+        },
+        {
+            "actionId": "settings.open_application",
+            "effect": "navigate_history",
+            "identity": "previous_workbench_route"
+        },
+        {
+            "actionId": "settings.start_guided_import",
+            "effect": "navigate_surface",
+            "identity": "global_import"
+        },
+        {
+            "actionId": "deployment.open_library",
+            "effect": "navigate_surface",
+            "identity": "current_subject"
+        },
+        {
+            "actionId": "guided_import.open_previous",
+            "effect": "guarded_navigation",
+            "identity": "previous_workbench_route"
+        },
+        {
+            "actionId": "journey.go_back",
+            "effect": "guarded_navigation",
+            "identity": "journey_owner_and_stage"
+        },
+        {
+            "actionId": "onboarding.open_library",
+            "effect": "commit_then_navigate",
+            "identity": "onboarding_preference"
+        },
+        {
+            "actionId": "search.open_result",
+            "effect": "navigate_surface",
+            "identity": "exact_result_route"
+        },
+        {
+            "actionId": "deployment.open_asset_usage",
+            "effect": "navigate_surface",
+            "identity": "current_subject_and_asset"
+        }
+    ],
+    "entries": [
+        {
+            "entryId": "shell.history.back",
+            "actionId": "workbench.navigate_history",
+            "sourcePath": "packages/client/desktop/src/renderer/shell/DesktopWindowFrame.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_window_frame.test.ts"
+        },
+        {
+            "entryId": "shell.history.forward",
+            "actionId": "workbench.navigate_history",
+            "sourcePath": "packages/client/desktop/src/renderer/shell/DesktopWindowFrame.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_window_frame.test.ts"
+        },
+        {
+            "entryId": "shell.menu.settings",
+            "actionId": "shell.open_settings",
+            "sourcePath": "packages/client/desktop/src/renderer/shell/DesktopWindowFrame.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_window_frame.test.ts"
+        },
+        {
+            "entryId": "shell.menu.history.back",
+            "actionId": "workbench.navigate_history",
+            "sourcePath": "packages/client/desktop/src/renderer/shell/DesktopWindowFrame.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_window_frame.test.ts"
+        },
+        {
+            "entryId": "shell.menu.history.forward",
+            "actionId": "workbench.navigate_history",
+            "sourcePath": "packages/client/desktop/src/renderer/shell/DesktopWindowFrame.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_window_frame.test.ts"
+        },
+        {
+            "entryId": "library.search.toolbar",
+            "actionId": "library.open_search",
+            "sourcePath": "packages/client/desktop/src/renderer/features/project-library/ProjectLibraryWorkspace.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_project_library.test.ts"
+        },
+        {
+            "entryId": "library.settings.warning",
+            "actionId": "library.open_settings",
+            "sourcePath": "packages/client/desktop/src/renderer/features/project-library/ProjectLibraryWorkspace.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_project_library_semantic_navigation.test.ts"
+        },
+        {
+            "entryId": "library.settings.footer",
+            "actionId": "library.open_settings",
+            "sourcePath": "packages/client/desktop/src/renderer/features/project-library/ProjectLibraryWorkspace.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_project_library_semantic_navigation.test.ts"
+        },
+        {
+            "entryId": "library.source_locations.toolbar",
+            "actionId": "library.open_source_locations",
+            "sourcePath": "packages/client/desktop/src/renderer/features/project-library/ProjectLibraryWorkspace.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_project_library_guided_import.test.ts"
+        },
+        {
+            "entryId": "library.guided_import.toolbar",
+            "actionId": "library.start_guided_import",
+            "sourcePath": "packages/client/desktop/src/renderer/features/project-library/ProjectLibraryWorkspace.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_project_library_guided_import.test.ts"
+        },
+        {
+            "entryId": "library.guided_import.no_projects",
+            "actionId": "library.start_guided_import",
+            "sourcePath": "packages/client/desktop/src/renderer/features/project-library/ProjectLibraryWorkspace.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_project_library_guided_import.test.ts"
+        },
+        {
+            "entryId": "library.guided_import.empty_collection",
+            "actionId": "library.start_guided_import",
+            "sourcePath": "packages/client/desktop/src/renderer/features/project-library/ProjectLibraryWorkspace.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_project_library_guided_import.test.ts"
+        },
+        {
+            "entryId": "library.guided_import.empty_kind",
+            "actionId": "library.start_guided_import",
+            "sourcePath": "packages/client/desktop/src/renderer/features/project-library/AssetCollection.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_asset_collection.test.ts"
+        },
+        {
+            "entryId": "library.deployments.toolbar",
+            "actionId": "library.open_deployments",
+            "sourcePath": "packages/client/desktop/src/renderer/features/project-library/ProjectLibraryWorkspace.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_project_library_deployment_entry.test.ts"
+        },
+        {
+            "entryId": "library.deployments.retained_notice",
+            "actionId": "library.open_deployments",
+            "sourcePath": "packages/client/desktop/src/renderer/features/project-library/ProjectLibraryWorkspace.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_project_library.test.ts"
+        },
+        {
+            "entryId": "library.asset_deployment.row",
+            "actionId": "library.open_asset_deployment",
+            "sourcePath": "packages/client/desktop/src/renderer/features/project-library/AssetCollection.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_project_library.test.ts"
+        },
+        {
+            "entryId": "library.asset_deployment.inspector",
+            "actionId": "library.open_asset_deployment",
+            "sourcePath": "packages/client/desktop/src/renderer/features/project-library/AssetActions.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_project_library.test.ts"
+        },
+        {
+            "entryId": "sources.library.sidebar",
+            "actionId": "sources.open_library",
+            "sourcePath": "packages/client/desktop/src/renderer/features/source-library/SourceLibraryWorkspace.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_source_library_workspace.test.ts"
+        },
+        {
+            "entryId": "sources.settings.warning",
+            "actionId": "sources.open_settings",
+            "sourcePath": "packages/client/desktop/src/renderer/features/source-library/SourceLibraryWorkspace.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_source_library_workspace.test.ts"
+        },
+        {
+            "entryId": "sources.settings.footer",
+            "actionId": "sources.open_settings",
+            "sourcePath": "packages/client/desktop/src/renderer/features/source-library/SourceLibraryWorkspace.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_source_library_workspace.test.ts"
+        },
+        {
+            "entryId": "sources.guided_import.toolbar",
+            "actionId": "sources.start_guided_import",
+            "sourcePath": "packages/client/desktop/src/renderer/features/source-library/SourceLibraryWorkspace.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_source_library_workspace.test.ts"
+        },
+        {
+            "entryId": "sources.guided_import.empty",
+            "actionId": "sources.start_guided_import",
+            "sourcePath": "packages/client/desktop/src/renderer/features/source-library/SourceLibraryWorkspace.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_source_library_workspace.test.ts"
+        },
+        {
+            "entryId": "settings.application.sidebar",
+            "actionId": "settings.open_application",
+            "sourcePath": "packages/client/desktop/src/renderer/pages/SettingsPage.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_settings_page.test.ts"
+        },
+        {
+            "entryId": "settings.guided_import.runtime",
+            "actionId": "settings.start_guided_import",
+            "sourcePath": "packages/client/desktop/src/renderer/pages/SettingsPage.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_settings_page.test.ts"
+        },
+        {
+            "entryId": "deployment.library.sidebar",
+            "actionId": "deployment.open_library",
+            "sourcePath": "packages/client/desktop/src/renderer/pages/DeploymentPage.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_deployment_page.test.ts"
+        },
+        {
+            "entryId": "guided_import.previous.header",
+            "actionId": "guided_import.open_previous",
+            "sourcePath": "packages/client/desktop/src/renderer/pages/GuidedImportPage.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_guided_import_semantic_navigation.test.ts"
+        },
+        {
+            "entryId": "guided_import.previous.completion",
+            "actionId": "guided_import.open_previous",
+            "sourcePath": "packages/client/desktop/src/renderer/pages/GuidedImportPage.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_guided_import.test.ts"
+        },
+        {
+            "entryId": "journey.locations.back",
+            "actionId": "journey.go_back",
+            "sourcePath": "packages/client/desktop/src/renderer/features/discovery/DiscoveryWorkspace.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_guided_import_semantic_navigation.test.ts"
+        },
+        {
+            "entryId": "onboarding.library.later",
+            "actionId": "onboarding.open_library",
+            "sourcePath": "packages/client/desktop/src/renderer/pages/OnboardingPage.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_onboarding.test.ts"
+        },
+        {
+            "entryId": "onboarding.library.completion",
+            "actionId": "onboarding.open_library",
+            "sourcePath": "packages/client/desktop/src/renderer/pages/OnboardingPage.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_onboarding.test.ts"
+        },
+        {
+            "entryId": "search.result.row",
+            "actionId": "search.open_result",
+            "sourcePath": "packages/client/desktop/src/renderer/features/catalog-search/CatalogSearchOverlay.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_catalog_search_overlay.test.ts"
+        },
+        {
+            "entryId": "deployment.authorization.asset_usage",
+            "actionId": "deployment.open_asset_usage",
+            "sourcePath": "packages/client/desktop/src/renderer/features/catalog-deployment/CatalogDeploymentAuthorizationFallback.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_catalog_deployment_authorization_navigation.test.ts"
+        },
+        {
+            "entryId": "deployment.authorization.library",
+            "actionId": "deployment.open_library",
+            "sourcePath": "packages/client/desktop/src/renderer/features/catalog-deployment/CatalogDeploymentAuthorizationFallback.tsx",
+            "receiptTestPath": "packages/client/desktop/tests/test_catalog_deployment_authorization_navigation.test.ts"
+        }
+    ]
+}
