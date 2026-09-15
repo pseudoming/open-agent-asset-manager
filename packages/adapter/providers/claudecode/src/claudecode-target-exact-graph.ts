@@ -24,7 +24,7 @@ import { binaryNativeFile, compareText, textNativeFile, validatesRebasedGraph } 
 
 export { createClaudeCodeGlobalNativeDocumentTargetSupports } from "./claudecode-target-global-native-document";
 
-import { createClaudeSkillCanonicalMaterializer, claudeSkillCanonicalDeclaration } from "./claudecode-target-skill-canonical";
+import { claudeSkillCanonicalDeclaration, createClaudeSkillCanonicalMaterializer } from "./claudecode-target-skill-canonical";
 
 const ENTRY_NAME = "SKILL.md";
 const PROJECT_SKILL_PREFIX = ".claude/skills/";
@@ -292,6 +292,7 @@ function createGlobalJavaScriptWorkflowGraphTargetSupport(input: {
 export function createClaudeCodeSkillGraphTargetSupport(input: {
     adapterVersion: string;
     canonicalSkill?: boolean;
+    linuxProjectSkill?: boolean;
     agentRuntimes: readonly AgentRuntimeDescriptor[];
     targetContextSchemaId: string;
 }): NativeProjectExactGraphProviderSupport {
@@ -302,12 +303,28 @@ export function createClaudeCodeSkillGraphTargetSupport(input: {
         materializationProfileId: PROFILE_ID,
         versionText: "2.1.220",
         buildIdentity: "sha256:674f61f20ff306f3100cf9200e4c36c4b70278b5bef2884549819b942a89c863",
-        platform: "wsl",
-        fixtureId: "claude-code-cli-2.1.220-wsl-project-skill-directory-2026-08-03",
-        parentRebaseFixtureId: "claude-code-cli-2.1.220-wsl-project-skill-directory-parent-rebase-v1",
-        targetBoundary: ".claude/skills/oaam-phase53-graph-skill",
-        exactLoadMarker: "OAAM_CC_21220_SKILL_GRAPH_4F2A91",
-        reverseFixtureId: "claude-code-project-skill-directory-existing-files-reverse-v1",
+        builds: [
+            {
+                platform: "wsl",
+                fixtureId: "claude-code-cli-2.1.220-wsl-project-skill-directory-2026-08-03",
+                parentRebaseFixtureId: "claude-code-cli-2.1.220-wsl-project-skill-directory-parent-rebase-v1",
+                targetBoundary: ".claude/skills/oaam-phase53-graph-skill",
+                exactLoadMarker: "OAAM_CC_21220_SKILL_GRAPH_4F2A91",
+                reverseFixtureId: "claude-code-project-skill-directory-existing-files-reverse-v1",
+            },
+            ...(input.linuxProjectSkill === false
+                ? []
+                : [
+                      {
+                          platform: "linux" as const,
+                          fixtureId: "claude-code-cli-2.1.220-linux-project-skill-directory-2026-09-15",
+                          parentRebaseFixtureId: "claude-code-cli-2.1.220-linux-project-skill-directory-parent-rebase-2026-09-15",
+                          targetBoundary: ".claude/skills/oaam-phase60-linux-skill",
+                          exactLoadMarker: "OAAM_CC_LINUX_SKILL_GRAPH_ORIGINAL_20260915",
+                          reverseFixtureId: "claude-code-linux-project-skill-directory-existing-files-reverse-2026-09-15",
+                      },
+                  ]),
+        ],
     });
 }
 
@@ -325,12 +342,16 @@ export function createClaudeCodeAppSkillGraphTargetSupport(input: {
         materializerCapabilityKey: "claudecode.app-project-skill-exact-graph-v1",
         versionText: "2.1.219",
         buildIdentity: "sha256:10f4c1f85b07f3cf6b8fff930fd26ecd475bd146a378acfafa559a6db9d89637",
-        platform: "win32",
-        fixtureId: "claude-app-1.24012.9-engine-2.1.219-win32-project-skill-directory-2026-08-03",
-        parentRebaseFixtureId: "claude-app-engine-2.1.219-win32-project-skill-directory-parent-rebase-v1",
-        targetBoundary: ".claude/skills/oaam-phase53-app-graph-skill",
-        exactLoadMarker: "OAAM_APP_SKILL_GRAPH_LOADED_20260803_R1",
-        reverseFixtureId: "claude-app-project-skill-directory-existing-files-reverse-v1",
+        builds: [
+            {
+                platform: "win32",
+                fixtureId: "claude-app-1.24012.9-engine-2.1.219-win32-project-skill-directory-2026-08-03",
+                parentRebaseFixtureId: "claude-app-engine-2.1.219-win32-project-skill-directory-parent-rebase-v1",
+                targetBoundary: ".claude/skills/oaam-phase53-app-graph-skill",
+                exactLoadMarker: "OAAM_APP_SKILL_GRAPH_LOADED_20260803_R1",
+                reverseFixtureId: "claude-app-project-skill-directory-existing-files-reverse-v1",
+            },
+        ],
     });
 }
 
@@ -390,43 +411,47 @@ function createSkillGraphTargetSupport(input: {
     materializerCapabilityKey?: string;
     versionText: string;
     buildIdentity: `sha256:${string}`;
-    platform: "wsl" | "win32";
-    fixtureId: string;
-    parentRebaseFixtureId: string;
-    targetBoundary: string;
-    exactLoadMarker: string;
-    reverseFixtureId: string;
+    builds: readonly {
+        platform: "wsl" | "linux" | "win32";
+        fixtureId: string;
+        parentRebaseFixtureId: string;
+        targetBoundary: string;
+        exactLoadMarker: string;
+        reverseFixtureId: string;
+    }[];
 }): NativeProjectExactGraphProviderSupport {
     const canonicalMaterializer = input.canonicalSkill === false ? undefined : createClaudeSkillCanonicalMaterializer("project");
     const canonicalDeclaration =
         canonicalMaterializer === undefined
             ? {}
             : { canonicalMaterialization: claudeSkillCanonicalDeclaration(canonicalMaterializer) };
-    const targetRelativePaths = [
-        `${input.targetBoundary}/${ENTRY_NAME}`,
-        `${input.targetBoundary}/assets/marker.bin`,
-        `${input.targetBoundary}/references/details.md`,
-        `${input.targetBoundary}/scripts/marker.py`,
-    ];
-    const verifiedBuild = createVerifiedNativeProjectExactGraphBuild({
-        agentRuntimeId: input.agentRuntimeId,
-        versionText: input.versionText,
-        buildIdentity: input.buildIdentity,
-        platform: input.platform,
-        materializationProfileId: input.materializationProfileId,
-        fixtureId: input.fixtureId,
-        assetKind: "Skill",
-        nativeDialectId: CLAUDECODE_NATIVE_DIALECTS.skill,
-        projectGraphValidator: CLAUDECODE_SKILL_GRAPH_TARGET_COMPONENTS.graph,
-        reverseParser: CLAUDECODE_SKILL_GRAPH_TARGET_COMPONENTS.reverse,
-        rebaseMaterializer: CLAUDECODE_SKILL_GRAPH_TARGET_COMPONENTS.rebase,
-        ...canonicalDeclaration,
-        restorationDialectIds: [],
-        parentRebaseFixtureId: input.parentRebaseFixtureId,
-        targetGraphIdentity: targetRelativePaths[0] as PosixRelativePath,
-        targetRelativePaths: targetRelativePaths as PosixRelativePath[],
-        exactLoadMarker: input.exactLoadMarker,
-        reverseFixtureId: input.reverseFixtureId,
+    const verifiedBuilds = input.builds.map((build) => {
+        const targetRelativePaths = [
+            `${build.targetBoundary}/${ENTRY_NAME}`,
+            `${build.targetBoundary}/assets/marker.bin`,
+            `${build.targetBoundary}/references/details.md`,
+            `${build.targetBoundary}/scripts/marker.py`,
+        ];
+        return createVerifiedNativeProjectExactGraphBuild({
+            agentRuntimeId: input.agentRuntimeId,
+            versionText: input.versionText,
+            buildIdentity: input.buildIdentity,
+            platform: build.platform,
+            materializationProfileId: input.materializationProfileId,
+            fixtureId: build.fixtureId,
+            assetKind: "Skill",
+            nativeDialectId: CLAUDECODE_NATIVE_DIALECTS.skill,
+            projectGraphValidator: CLAUDECODE_SKILL_GRAPH_TARGET_COMPONENTS.graph,
+            reverseParser: CLAUDECODE_SKILL_GRAPH_TARGET_COMPONENTS.reverse,
+            rebaseMaterializer: CLAUDECODE_SKILL_GRAPH_TARGET_COMPONENTS.rebase,
+            ...canonicalDeclaration,
+            restorationDialectIds: [],
+            parentRebaseFixtureId: build.parentRebaseFixtureId,
+            targetGraphIdentity: targetRelativePaths[0] as PosixRelativePath,
+            targetRelativePaths: targetRelativePaths as PosixRelativePath[],
+            exactLoadMarker: build.exactLoadMarker,
+            reverseFixtureId: build.reverseFixtureId,
+        });
     });
     return createNativeProjectExactGraphProviderSupport({
         adapterId: "CLAUDECODE",
@@ -451,7 +476,7 @@ function createSkillGraphTargetSupport(input: {
         restorationDialectIds: [],
         target: { targetContextSchemaId: input.targetContextSchemaId, requiredFacts: {} },
         buildCompatibility: claudeCodeTargetBuildCompatibilityFor(input.agentRuntimeId),
-        verifiedBuilds: [verifiedBuild],
+        verifiedBuilds,
     });
 }
 

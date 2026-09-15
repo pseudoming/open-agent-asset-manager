@@ -8,9 +8,9 @@ Skills, Anweisungen und Workflows verdienen einen Platz jenseits eines einzelnen
 
 [English](../README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · [Deutsch](README.de.md)
 
-[Anleitung lesen](USAGE.de.md) · [Aus dem Quellcode starten](#aus-dem-quellcode-starten) · [Technischer Einblick](ARCHITECTURE.de.md)
+[Download](https://github.com/pseudoming/open-agent-asset-manager/releases) · [Anleitung](USAGE.de.md) · [Aus Quellcode bauen](BUILD.de.md) · [Technischer Einblick](ARCHITECTURE.de.md)
 
-[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](../LICENSE) · Quellcode-Vorschau
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](../LICENSE) · Desktop-Beta
 
 </div>
 
@@ -49,24 +49,16 @@ Ein Skill, der nur auf deinen ausdrücklichen Aufruf hin ausgeführt werden soll
 
 Die [Bedienungsanleitung](USAGE.de.md) führt dich durch die einzelnen Schritte. Scans und Vorschauen wenden noch keine Änderungen an.
 
-## Aus dem Quellcode starten
+## Herunterladen und starten
 
-Für die **Entwicklungsvorschau unter Linux x64** benötigst du **Node.js ab 22.14**, npm und die C++-Build-Werkzeuge für dein System. Voraussetzungen für Python, Systembibliotheken und native Module stehen in der [Build-Anleitung](BUILD.de.md).
+Wähle eine veröffentlichte Beta unter [Releases](https://github.com/pseudoming/open-agent-asset-manager/releases): das ZIP für Windows x64 oder das tar.gz für Linux x64 samt zugehörigem Manifest. Entpacke das gesamte Archiv und starte unter Windows `oaam-desktop.exe` oder unter Linux `./oaam-desktop` im entpackten Ordner. Electron/Node und OAAM-Abhängigkeiten sind enthalten. Linux benötigt zusätzlich [Desktop-Systembibliotheken](USAGE.de.md#linux-systembibliotheken). Node.js und Build-Werkzeuge brauchst du nur für die [Entwicklung aus dem Quellcode](BUILD.de.md).
 
-```sh
-git clone https://github.com/pseudoming/open-agent-asset-manager.git
-cd open-agent-asset-manager
-npm ci
-npm run build
-npm exec -- electron-rebuild -v 42.7.0 -m packages/core -o better-sqlite3
-npm run start --workspace @oaam/client-desktop
-```
-
-Der Schritt für native Module bereitet SQLite für Electron vor. Wenn du anschließend Tests unter Node ausführst, baue das Modul wie in der Build-Anleitung beschrieben erneut. Diese Quellcode-Vorschau enthält noch kein herunterladbares Desktop-Paket.
+Beta-Versionen verwenden gemeinsam das Profil **OAAM Preview**. Beende OAAM und entpacke ein Update in einen neuen Ordner; deine gespeicherte Bibliothek bleibt im vorhandenen Profil. Lies vor dem ersten Import die [Hinweise zu Start und Updates](USAGE.de.md).
 
 ## Aktueller Umfang
 
-- Der Schwerpunkt der Desktop-Auslieferung liegt auf **Windows x64**, einschließlich ausdrücklich ausgewählter Ubuntu-WSL-x64-Umgebungen. Ein erfolgreicher Build auf einem anderen System belegt noch keine dort geprüfte Desktop-Auslieferung.
+- Desktop-Archive gibt es für **Windows x64 und Linux x64**. Linux ist unter Ubuntu WSL/WSLg geprüft; die Abnahme auf nativem Ubuntu und macOS steht noch aus. Die Windows-App kann auch Assets in einer ausdrücklich ausgewählten WSL-Distribution verwalten.
+- Diese Vorschau ergänzt Bereitstellung und Rückübernahme von Projekt-Skills für **Claude Code CLI 2.1.220** unter Linux. Andere Tools, Geltungsbereiche und Asset-Kombinationen behalten ihre jeweiligen Unterstützungsgrenzen.
 - Chatverläufe, Zugangsdaten, private Sitzungen, interne Plugin-Daten und vom Tool verwaltete eingebaute Inhalte gehören nicht zur Asset-Bibliothek.
 
 ## Mitmachen

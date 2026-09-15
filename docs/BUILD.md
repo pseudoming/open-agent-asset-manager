@@ -71,10 +71,11 @@ On macOS, this evidence covers source checks only. The safe filesystem operation
 writes and recovery have not yet been adapted to Darwin, so complete asset journeys are not supported there.
 Desktop packaging and UI testing also remain pending.
 
-The current desktop delivery focus is Windows x64 with explicitly selected Ubuntu WSL x64 environments.
-The source preview above does **not** construct that Windows delivery: its native Shared target, Electron
-resources and matching selected-WSL Linux runtime/service must be prepared together. Building the TypeScript
-workspaces alone does not produce a Windows portable package or certify another installed platform.
+Published Desktop packages cover Windows x64 and Linux x64. Linux installed evidence is scoped to Ubuntu
+WSL/WSLg. The Windows app can also manage assets in an explicitly selected WSL distribution. For ordinary download and
+startup, use [the usage guide](USAGE.md). The source commands above build the workspaces; the distribution
+commands below assemble the complete archive, including target-native resources and the matching WSL service
+for Windows. Compilation alone does not certify installed behavior on another platform.
 
 Windows native development requires Visual Studio C++ build tools and Python. The source includes a common
 distribution builder. After npm ci and npm run build, build from a clean checkout into new absolute output directories:
@@ -89,7 +90,7 @@ Windows. Copy that service archive and its manifest to Windows, using the same s
 After npm ci and npm run build on Windows, run in PowerShell:
 
 ```powershell
-$archive = 'C:\oaam-build\OAAM-0.1.0-beta.1-restricted-wsl-support-linux-x64.tar.gz'
+$archive = 'C:\oaam-build\OAAM-0.1.0-beta.2-restricted-wsl-support-linux-x64.tar.gz'
 $nodeExecutable = (Get-Command node.exe -CommandType Application | Select-Object -First 1).Source
 $npmCli = Join-Path (Split-Path -Parent $nodeExecutable) 'node_modules/npm/bin/npm-cli.js'
 if (!(Test-Path -LiteralPath $npmCli -PathType Leaf)) { throw 'Node installation is missing npm-cli.js' }
@@ -106,8 +107,7 @@ internal tarballs. The Windows package also verifies its same-commit WSL service
 Public main pushes generate expiring Actions test artifacts, which require GitHub sign-in. Exact v&lt;version&gt; tags
 create Release drafts after checks and both packages succeed; beta drafts are prereleases. Drafts remain unpublished
 until candidate review and publication. Public Release downloads are the ordinary distribution path. Building a
-package alone does not establish an installed journey: Linux acceptance is scoped to Ubuntu WSL/WSLg, and
-Windows local/selected-WSL results remain separate. The supporting WSL service is neither Linux Desktop nor standalone Headless.
+package alone does not establish an installed journey: Linux acceptance is scoped to Ubuntu WSL/WSLg; the Windows app uses its bundled service for explicitly selected WSL distributions. The supporting WSL service is neither Linux Desktop nor standalone Headless.
 
 The Headless package is a technical Client/Host protocol entry, not an interactive desktop substitute. It needs
 explicit data, database, platform and access-root configuration; the automated tests demonstrate isolated setup.

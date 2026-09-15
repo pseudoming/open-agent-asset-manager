@@ -75,11 +75,11 @@ Auf macOS belegen diese Prüfungen bisher nur den Quellcode-Stand. Die sicheren 
 Lesen, Schreiben und Wiederherstellen von Assets sind noch nicht an Darwin angepasst; vollständige
 Asset-Abläufe werden dort daher noch nicht unterstützt. Desktop-Paketierung und UI-Tests stehen ebenfalls aus.
 
-Die Desktop-Auslieferung konzentriert sich derzeit auf Windows x64 mit ausdrücklich ausgewählten
-Ubuntu-WSL-x64-Umgebungen. Die obige Vorschau **erzeugt diese Windows-Auslieferung nicht**. Dafür müssen
-das native Windows-Ziel von Shared, die Electron-Ressourcen und die passende Linux-Laufzeit samt Dienst
-für die ausgewählte WSL-Umgebung gemeinsam vorbereitet werden. Kompilierte TypeScript-Workspaces sind
-noch kein portables Windows-Paket und kein Nachweis für eine Installation auf anderen Plattformen.
+Veröffentlichte Desktop-Pakete gibt es für Windows x64 und Linux x64. Linux ist unter Ubuntu WSL/WSLg
+geprüft. Die Windows-App kann auch Assets in einer ausdrücklich ausgewählten WSL-Distribution verwalten. Download
+und Start beschreibt die [Bedienungsanleitung](USAGE.de.md). Die obigen Befehle bauen die Workspaces;
+die folgenden Distributionsbefehle erstellen das vollständige Archiv samt nativen Ressourcen und dem
+passenden WSL-Dienst für Windows. Kompilierung allein belegt keinen installierten Ablauf auf anderen Plattformen.
 
 Native Windows-Entwicklung benötigt die C++-Buildtools von Visual Studio und Python. Ein gemeinsamer
 Distributions-Builder ist enthalten. Nach npm ci und npm run build erzeugt ein sauberer Checkout die Ausgabe in neuen absoluten Verzeichnissen:
@@ -94,7 +94,7 @@ Kopieren Sie dessen Archiv und Manifest nach Windows; beide Rechner müssen dens
 Nach npm ci und npm run build unter Windows führen Sie PowerShell aus:
 
 ```powershell
-$archive = 'C:\oaam-build\OAAM-0.1.0-beta.1-restricted-wsl-support-linux-x64.tar.gz'
+$archive = 'C:\oaam-build\OAAM-0.1.0-beta.2-restricted-wsl-support-linux-x64.tar.gz'
 $nodeExecutable = (Get-Command node.exe -CommandType Application | Select-Object -First 1).Source
 $npmCli = Join-Path (Split-Path -Parent $nodeExecutable) 'node_modules/npm/bin/npm-cli.js'
 if (!(Test-Path -LiteralPath $npmCli -PathType Leaf)) { throw 'Node installation is missing npm-cli.js' }
@@ -113,8 +113,7 @@ beta-Versionen OAAM Preview; dev.N benötigt ein absolutes --user-data-dir. Expl
 Pushes auf das öffentliche main erzeugen befristete Actions-Testartefakte, deren Download eine GitHub-Anmeldung verlangt.
 Ein exakt passender v&lt;version&gt;-Tag erzeugt nach erfolgreichen Prüfungen und beiden Paketen einen Release-Entwurf;
 beta wird als Vorabversion markiert. Erst nach Prüfung und Veröffentlichung bietet das Release öffentliche Downloads.
-Paketierung allein belegt keinen installierten Ablauf. Linux wird in Ubuntu WSL/WSLg geprüft; Windows lokal und ausgewählte
-WSL-Umgebungen haben getrennte Nachweise. Der unterstützende WSL-Dienst ist weder Linux Desktop noch eigenständiges Headless.
+Paketierung allein belegt keinen installierten Ablauf. Linux wird in Ubuntu WSL/WSLg geprüft; die Windows-App greift über ihren mitgelieferten Dienst auf ausdrücklich ausgewählte WSL-Distributionen zu. Der unterstützende WSL-Dienst ist weder Linux Desktop noch eigenständiges Headless.
 
 Headless ist ein technischer Einstieg in das Client/Host-Protokoll. Es benötigt explizite Einstellungen für
 Daten, Datenbank, Plattform und Zugriffsverzeichnisse und ersetzt keinen interaktiven Desktop.

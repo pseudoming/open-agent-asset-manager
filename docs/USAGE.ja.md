@@ -2,8 +2,28 @@
 
 [English](USAGE.md) · [简体中文](USAGE.zh-CN.md) · [日本語](USAGE.ja.md) · [Deutsch](USAGE.de.md) · [README](README.ja.md)
 
-デスクトップ画面の操作を説明します。このソーススナップショットにはビルド済みの実行ファイルは含まれません。
-現在の起動方法と配布要件は[ビルドとテスト](BUILD.ja.md)、設計の背景は[技術紹介](ARCHITECTURE.ja.md)を参照してください。
+## ダウンロード、展開、起動
+
+1. [Releases](https://github.com/pseudoming/open-agent-asset-manager/releases) で公開済みの Beta を選び、Windows x64 の ZIP または Linux x64 の tar.gz と、その `.manifest.json` をダウンロードします。GitHub のソースコード用アーカイブとは別のファイルです。
+2. 所有するフォルダーにアーカイブ全体を展開します。Windows は `oaam-desktop.exe`、Linux は展開先のターミナルで `./oaam-desktop` を実行します。tar は実行権限を保持します。Linux にはグラフィカルなデスクトップが必要で、検証済み環境は Ubuntu WSL/WSLg です。
+3. Electron/Node と OAAM のアプリケーション依存ライブラリは同梱されています。Linux のデスクトップ用システムライブラリは別途必要です。アセットを管理するコーディングツールは別途インストールしてください。Node.js とコンパイラーが必要なのは[ソースからビルド](BUILD.ja.md)する場合です。
+
+## Linux の実行ライブラリ
+
+Linux にはグラフィカルなデスクトップと GTK、NSS などのシステムライブラリも必要です。**Ubuntu 22.04** で不足している場合は、次の実行用パッケージをインストールします。コンパイラーやソースのビルドは不要です。
+
+```sh
+sudo apt-get update
+sudo apt-get install --no-install-recommends -y libgtk-3-0 libnss3 libasound2 libgbm1
+```
+
+検証済みの Linux 環境は Ubuntu WSL/WSLg です。他の Ubuntu バージョンではパッケージ名が異なる場合があり、この手順の検証範囲には含まれません。
+
+## Beta の更新
+
+OAAM を終了し、新しいアーカイブを別のフォルダーに展開して起動します。Beta は共通の **OAAM Preview** プロファイルを使用し、ライブラリはプログラムのフォルダー外に保存されます。正式版は別の **OAAM** プロファイルを使います。更新前に画面から状態のバックアップを作成できます。自動更新や両プロファイル間の自動移行は提供していません。
+
+マニフェストにはアーカイブの SHA-256 と全ファイルの一覧が記録されています。実行ファイル横の `build-info.json` でバージョンとソースを確認できます。問題の報告にはバージョンを添えてください。
 
 ## 最初の取り込み
 

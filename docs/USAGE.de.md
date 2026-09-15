@@ -2,8 +2,28 @@
 
 [English](USAGE.md) · [简体中文](USAGE.zh-CN.md) · [日本語](USAGE.ja.md) · [Deutsch](USAGE.de.md) · [README](README.de.md)
 
-Diese Anleitung beschreibt die Desktop-Oberfläche. Der Quellcode-Snapshot enthält kein fertiges Binärpaket.
-Die [Build-Anleitung](BUILD.de.md) erklärt Start und Auslieferungsanforderungen, die [technische Einführung](ARCHITECTURE.de.md) den Entwurf.
+## Herunterladen, entpacken und starten
+
+1. Wähle unter [Releases](https://github.com/pseudoming/open-agent-asset-manager/releases) eine veröffentlichte Beta. Lade das Windows-x64-ZIP oder das Linux-x64-tar.gz samt `.manifest.json` herunter. Die Quellcode-Archive von GitHub sind eigene Dateien.
+2. Entpacke das gesamte Archiv in einen eigenen Ordner. Starte unter Windows `oaam-desktop.exe`, unter Linux im Terminal des entpackten Ordners `./oaam-desktop`. Das tar-Archiv bewahrt die Ausführungsrechte. Linux benötigt eine grafische Desktop-Sitzung; geprüft ist Ubuntu WSL/WSLg.
+3. Electron/Node und die Anwendungsabhängigkeiten von OAAM sind enthalten; Linux benötigt zusätzlich Desktop-Bibliotheken des Systems. Installiere die Coding-Tools, deren Assets du verwalten möchtest, separat. Node.js und Compiler brauchst du nur zum [Bauen aus dem Quellcode](BUILD.de.md).
+
+## Linux-Systembibliotheken
+
+Linux benötigt eine grafische Desktop-Sitzung und Systembibliotheken wie GTK und NSS. Fehlen diese unter **Ubuntu 22.04**, installiere die folgenden Laufzeitpakete. Compiler oder ein Build aus dem Quellcode sind dafür nicht nötig.
+
+```sh
+sudo apt-get update
+sudo apt-get install --no-install-recommends -y libgtk-3-0 libnss3 libasound2 libgbm1
+```
+
+Die geprüfte Linux-Umgebung ist Ubuntu WSL/WSLg. Andere Ubuntu-Versionen können andere Paketnamen verwenden und sind von dieser Anleitung nicht abgedeckt.
+
+## Eine Beta aktualisieren
+
+Beende OAAM, entpacke das neue Archiv in einen neuen Ordner und starte dessen Programm. Beta-Versionen teilen sich das Profil **OAAM Preview**; die Bibliothek liegt außerhalb des Programmordners. Reguläre Versionen verwenden ein separates **OAAM**-Profil. Erstelle vor dem Update über die Oberfläche eine Zustandssicherung. Automatische Updates und die automatische Migration zwischen den beiden Profilen werden nicht angeboten.
+
+Das Manifest enthält den SHA-256-Wert des Archivs und das vollständige Dateiverzeichnis. `build-info.json` neben der ausführbaren Datei nennt Version und Quellcode-Stand. Gib die Version bei Fehlermeldungen an.
 
 ## Der erste Import
 

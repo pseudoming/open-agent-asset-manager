@@ -8,9 +8,9 @@ Your skills, instructions and workflows deserve a home beyond a single coding to
 
 [English](README.md) · [简体中文](docs/README.zh-CN.md) · [日本語](docs/README.ja.md) · [Deutsch](docs/README.de.md)
 
-[View guide](docs/USAGE.md) · [Run from source](#run-from-source) · [How it works](docs/ARCHITECTURE.md)
+[Download](https://github.com/pseudoming/open-agent-asset-manager/releases) · [Usage guide](docs/USAGE.md) · [Build from source](docs/BUILD.md) · [How it works](docs/ARCHITECTURE.md)
 
-[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE) · Source preview
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE) · Desktop beta
 
 </div>
 
@@ -49,24 +49,16 @@ A Skill configured to run only when you invoke it should keep that behavior afte
 
 Start with the [usage guide](docs/USAGE.md). A scan or preview does not apply changes.
 
-## Run from source
+## Download and start
 
-For the **Linux x64 development preview**, use **Node.js 22.14 or newer**, npm and your host's C++ build tools. Follow the [build guide](docs/BUILD.md) for Python, system libraries and native-module details.
+Download a published beta from [Releases](https://github.com/pseudoming/open-agent-asset-manager/releases): choose the Windows x64 ZIP or Linux x64 tar.gz and its matching manifest. Extract the entire archive, then run `oaam-desktop.exe` on Windows or `./oaam-desktop` in the extracted Linux folder. The desktop packages include Electron/Node and OAAM dependencies. Linux also needs [desktop system libraries](docs/USAGE.md#linux-runtime-libraries); Node.js and build tools are only needed for [source development](docs/BUILD.md).
 
-```sh
-git clone https://github.com/pseudoming/open-agent-asset-manager.git
-cd open-agent-asset-manager
-npm ci
-npm run build
-npm exec -- electron-rebuild -v 42.7.0 -m packages/core -o better-sqlite3
-npm run start --workspace @oaam/client-desktop
-```
-
-The native-module step prepares SQLite for Electron. For Node-based tests afterwards, follow the rebuild instructions in the build guide. This source preview does not include a downloadable desktop package.
+Beta versions share the **OAAM Preview** profile. Close OAAM and extract an update into a new folder; your saved library remains in that profile. See [startup and updates](docs/USAGE.md) before your first import.
 
 ## Current scope
 
-- The desktop delivery focus is **Windows x64**, including explicitly selected Ubuntu WSL x64 environments. Building source on another host does not establish installed-platform support.
+- Desktop archives are available for **Windows x64 and Linux x64**. Linux verification covers Ubuntu WSL/WSLg; native Ubuntu and macOS installed acceptance remain pending. The Windows app can also manage assets in a WSL distribution you explicitly select.
+- This preview adds Linux project Skill deployment and reverse acceptance for **Claude Code CLI 2.1.220**. Other runtime, scope and asset combinations retain their own support limits.
 - Chat transcripts, credentials, private sessions, plugin-private data and built-in managed content are outside OAAM's asset library.
 
 ## Build with us

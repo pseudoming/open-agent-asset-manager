@@ -2,8 +2,28 @@
 
 [English](USAGE.md) · [简体中文](USAGE.zh-CN.md) · [日本語](USAGE.ja.md) · [Deutsch](USAGE.de.md) · [README](README.zh-CN.md)
 
-本文介绍桌面界面的操作。本次源码快照不附带预构建程序；当前交付与发行目录要求见
-[构建与测试](BUILD.zh-CN.md)。
+## 下载、解压与启动
+
+1. 打开 [Releases](https://github.com/pseudoming/open-agent-asset-manager/releases)，选择已发布的 Beta，下载 Windows x64 ZIP 或 Linux x64 tar.gz 及其 `.manifest.json`。GitHub 的源码归档与桌面包是不同文件。
+2. 将完整归档解压到你拥有的目录。Windows 运行 `oaam-desktop.exe`；Linux 在解压目录打开终端并运行 `./oaam-desktop`，tar 归档会保留可执行权限。Linux 需要图形桌面，已验证环境为 Ubuntu WSL/WSLg。
+3. 桌面包包含 Electron/Node 和 OAAM 应用依赖；Linux 桌面系统库需要由系统提供。需要管理资产的编程工具请另外安装。只有[从源码构建](BUILD.zh-CN.md)需要 Node.js 和编译器。
+
+## Linux 运行库
+
+Linux 还需要图形桌面及 GTK、NSS 等系统库。**Ubuntu 22.04** 缺少这些运行库时，可安装下面的包，无需安装编译器或从源码构建。
+
+```sh
+sudo apt-get update
+sudo apt-get install --no-install-recommends -y libgtk-3-0 libnss3 libasound2 libgbm1
+```
+
+已验证的 Linux 环境为 Ubuntu WSL/WSLg。其他 Ubuntu 版本的包名可能不同，不在本命令的验证范围内。
+
+## 升级 Beta
+
+关闭 OAAM，将新归档解压到新目录，再启动其中的程序。Beta 版本共用 **OAAM Preview** 数据目录，保存的资产库位于程序目录之外；正式版使用独立的 **OAAM** 数据目录。升级前可在界面创建状态备份；当前不提供自动更新或这两个数据目录之间的自动迁移。
+
+随包清单记录归档 SHA-256 和完整文件目录；可执行文件旁的 `build-info.json` 标明版本与来源。报告问题时请附上版本。
 
 ## 首次导入
 

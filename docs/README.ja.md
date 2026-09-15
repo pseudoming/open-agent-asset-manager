@@ -8,9 +8,9 @@
 
 [English](../README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · [Deutsch](README.de.md)
 
-[使い方](USAGE.ja.md) · [ソースから実行](#ソースから実行する) · [技術紹介](ARCHITECTURE.ja.md)
+[ダウンロード](https://github.com/pseudoming/open-agent-asset-manager/releases) · [使い方](USAGE.ja.md) · [ソースのビルド](BUILD.ja.md) · [技術紹介](ARCHITECTURE.ja.md)
 
-[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](../LICENSE) · ソースプレビュー
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](../LICENSE) · デスクトップ Beta
 
 </div>
 
@@ -49,24 +49,16 @@ OAAM は **Guidance、Rule、Workflow、Skill、Subagent の宣言、Memory** �
 
 詳しくは[使い方ガイド](USAGE.ja.md)をご覧ください。スキャンやプレビューだけで変更が適用されることはありません。
 
-## ソースから実行する
+## ダウンロードして起動する
 
-**Linux x64 の開発用プレビュー**には、**Node.js 22.14 以降**、npm、お使いの OS の C++ ビルドツールが必要です。Python、システムライブラリ、ネイティブモジュールの要件は[ビルドガイド](BUILD.ja.md)を参照してください。
+[Releases](https://github.com/pseudoming/open-agent-asset-manager/releases) から公開済みの Beta を選び、Windows x64 の ZIP または Linux x64 の tar.gz と、対応するマニフェストをダウンロードします。アーカイブ全体を展開し、Windows では `oaam-desktop.exe`、Linux では展開先で `./oaam-desktop` を実行します。Electron/Node と OAAM の依存ライブラリは同梱されています。Linux では[デスクトップ用システムライブラリ](USAGE.ja.md#linux-の実行ライブラリ)も必要です。Node.js とビルドツールが必要なのは[ソース開発](BUILD.ja.md)の場合です。
 
-```sh
-git clone https://github.com/pseudoming/open-agent-asset-manager.git
-cd open-agent-asset-manager
-npm ci
-npm run build
-npm exec -- electron-rebuild -v 42.7.0 -m packages/core -o better-sqlite3
-npm run start --workspace @oaam/client-desktop
-```
-
-ネイティブモジュールの手順で SQLite を Electron 用に準備します。その後 Node のテストを実行する場合は、ビルドガイドに従って再ビルドしてください。このプレビューにはダウンロード可能なデスクトップパッケージは含まれません。
+Beta は共通の **OAAM Preview** プロファイルを使用します。更新時は OAAM を終了して新しいフォルダーに展開します。保存したライブラリは既存のプロファイルに残ります。初回の取り込み前に[起動と更新の説明](USAGE.ja.md)をご覧ください。
 
 ## 現在の対象範囲
 
-- デスクトップの主な対象は **Windows x64** と、ユーザーが明示的に選択した Ubuntu WSL x64 環境です。他の OS でソースをビルドできても、その OS での配布版の動作確認を意味しません。
+- **Windows x64 と Linux x64** のデスクトップパッケージを提供します。Linux の検証範囲は Ubuntu WSL/WSLg です。ネイティブ Ubuntu と macOS の実機受け入れは未完了です。Windows アプリでは明示的に選択した WSL ディストリビューションのアセットも管理できます。
+- この版では **Claude Code CLI 2.1.220** の Linux プロジェクト Skill の配置と外部編集の取り込みに対応します。他のツール、スコープ、アセットの組み合わせには、それぞれの対応範囲があります。
 - チャット本文、認証情報、プライベートセッション、プラグイン専用データ、ツールが管理する組み込みコンテンツは対象外です。
 
 ## 開発に参加する

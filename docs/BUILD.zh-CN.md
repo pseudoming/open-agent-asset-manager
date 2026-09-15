@@ -69,10 +69,10 @@ CI 在 Windows x64 和 macOS 26 ARM64 上运行源码构建、架构测试及选
 macOS 当前证据仅覆盖源码检查。资产读取、写入与恢复所需的安全文件操作尚未适配 Darwin，
 因此尚不支持完整资产旅程；桌面打包和界面测试也仍待完成。
 
-当前桌面交付主要面向 Windows x64 与用户明确选定的 Ubuntu WSL x64。上面的开发预览流程
-**不会生成这套 Windows 交付目录**：Windows 原生 Shared 目标、Electron 资源和选定 WSL 的
-配套 Linux runtime/service 需要一并准备。仅编译 TypeScript 工作区不会生成 Windows portable
-包，也不代表其他平台已经完成安装运行验收。
+已发布的桌面包覆盖 Windows x64 和 Linux x64。Linux 安装运行证据限 Ubuntu WSL/WSLg，Windows
+应用也可管理明确选定的 WSL 发行版中的资产。普通下载与启动见[使用指南](USAGE.zh-CN.md)。上面的命令构建
+工作区；下面的打包命令组装完整归档，包括目标平台的原生资源及 Windows 所需的配套 WSL 服务。
+仅编译源码不代表其他平台已经完成安装运行验收。
 
 Windows 原生开发需要 Visual Studio C++ 构建工具和 Python。源码包含共用打包入口。完成 npm ci
 和 npm run build 后，从干净 checkout 构建到尚不存在的绝对路径：
@@ -86,7 +86,7 @@ npm run package:wsl-resource -- --output /absolute/new/oaam-wsl-resource
 清单复制到 Windows，两端必须使用同一源码 commit。在 Windows 完成 npm ci 和 npm run build 后运行：
 
 ```powershell
-$archive = 'C:\oaam-build\OAAM-0.1.0-beta.1-restricted-wsl-support-linux-x64.tar.gz'
+$archive = 'C:\oaam-build\OAAM-0.1.0-beta.2-restricted-wsl-support-linux-x64.tar.gz'
 $nodeExecutable = (Get-Command node.exe -CommandType Application | Select-Object -First 1).Source
 $npmCli = Join-Path (Split-Path -Parent $nodeExecutable) 'node_modules/npm/bin/npm-cli.js'
 if (!(Test-Path -LiteralPath $npmCli -PathType Leaf)) { throw 'Node installation is missing npm-cli.js' }
@@ -101,7 +101,7 @@ local 和当前 UTC 时间。tests/repository/package-assembly 的正式 recipe/
 
 公开 main 推送生成会过期、需登录 GitHub 下载的 Actions 测试产物。精确 v&lt;version&gt; tag 在全部检查
 及双平台打包成功后创建 Release 草稿，beta 标为预发布；草稿经候选审阅和发布后才提供普通公开下载。
-打包成功本身不代表实机旅程通过：Linux 验收环境限 Ubuntu WSL/WSLg，Windows 本地与选定 WSL 各自取证。
+打包成功本身不代表实机旅程通过：Linux 验收环境限 Ubuntu WSL/WSLg，Windows 应用通过内置服务访问明确选定的 WSL 发行版。
 配套 WSL 服务不等于完整 Linux Desktop 或独立 Headless。
 
 Headless 包是技术性的 Client/Host 协议入口，需要明确指定数据、数据库、平台和访问根，并非

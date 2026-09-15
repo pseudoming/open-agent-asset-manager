@@ -8,9 +8,9 @@
 
 [English](../README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · [Deutsch](README.de.md)
 
-[查看使用指南](USAGE.zh-CN.md) · [从源码运行](#从源码运行) · [技术设计](ARCHITECTURE.zh-CN.md)
+[下载桌面版](https://github.com/pseudoming/open-agent-asset-manager/releases) · [使用指南](USAGE.zh-CN.md) · [源码构建](BUILD.zh-CN.md) · [技术设计](ARCHITECTURE.zh-CN.md)
 
-[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](../LICENSE) · 源码预览版
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](../LICENSE) · 桌面 Beta 版
 
 </div>
 
@@ -49,24 +49,16 @@ OAAM 管理 **Guidance、Rule、Workflow、Skill、Subagent 声明和 Memory** �
 
 详见[使用指南](USAGE.zh-CN.md)。扫描和预览不会直接应用变更。
 
-## 从源码运行
+## 下载并启动
 
-**Linux x64 开发预览**需要 **Node.js 22.14 或更新版本**、npm 和当前系统的 C++ 构建工具。Python、系统库和原生模块要求见[构建指南](BUILD.zh-CN.md)。
+从 [Releases](https://github.com/pseudoming/open-agent-asset-manager/releases) 下载已发布的 Beta：选择 Windows x64 ZIP 或 Linux x64 tar.gz，以及对应清单。完整解压后，Windows 运行 `oaam-desktop.exe`；Linux 在解压目录运行 `./oaam-desktop`。桌面包自带 Electron/Node 和 OAAM 依赖；Linux 还需要[桌面系统库](USAGE.zh-CN.md#linux-运行库)。只有[源码开发](BUILD.zh-CN.md)需要 Node.js 和构建工具。
 
-```sh
-git clone https://github.com/pseudoming/open-agent-asset-manager.git
-cd open-agent-asset-manager
-npm ci
-npm run build
-npm exec -- electron-rebuild -v 42.7.0 -m packages/core -o better-sqlite3
-npm run start --workspace @oaam/client-desktop
-```
-
-原生模块步骤会让 SQLite 匹配 Electron。之后若要运行 Node 测试，请按构建指南重新编译该模块。当前提供源码预览，尚未提供可下载的桌面安装包。
+Beta 版本共用 **OAAM Preview** 数据目录。升级时关闭 OAAM，将新版解压到新目录；已保存的资产库仍保留在原数据目录。首次导入前可查看[启动与升级说明](USAGE.zh-CN.md)。
 
 ## 当前范围
 
-- 桌面交付主要面向 **Windows x64**，包括用户明确选定的 Ubuntu WSL x64 环境。在其他系统上构建成功不代表已完成该平台的安装运行验收。
+- 提供 **Windows x64 和 Linux x64** 桌面包。Linux 验证范围为 Ubuntu WSL/WSLg；原生 Ubuntu 和 macOS 的安装运行验收仍待完成。Windows 应用也可管理你明确选定的 WSL 发行版中的资产。
+- 本版补齐 **Claude Code CLI 2.1.220** 在 Linux 项目中的 Skill 部署与反向接纳；其他工具、范围和资产组合仍遵循各自的支持边界。
 - 聊天正文、凭据、私有会话、插件私有数据和工具内置托管内容不属于 OAAM 的资产库。
 
 ## 一起改进

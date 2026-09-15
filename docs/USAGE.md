@@ -2,8 +2,28 @@
 
 [English](USAGE.md) · [简体中文](USAGE.zh-CN.md) · [日本語](USAGE.ja.md) · [Deutsch](USAGE.de.md) · [README](../README.md)
 
-These instructions describe the Desktop interface. This source snapshot does not include a prebuilt binary;
-see [build and test](BUILD.md) for the current source delivery and distribution requirements.
+## Download, extract and start
+
+1. Open [Releases](https://github.com/pseudoming/open-agent-asset-manager/releases) and choose a published beta. Download the Windows x64 ZIP or Linux x64 tar.gz and its `.manifest.json`. GitHub's source-code archives are separate from the Desktop packages.
+2. Extract the complete archive into a folder you own. On Windows, run `oaam-desktop.exe`. On Linux, open a terminal in the extracted folder and run `./oaam-desktop`; the tar archive preserves executable permissions. Linux requires a graphical desktop session; the verified environment is Ubuntu WSL/WSLg.
+3. The packages include Electron/Node and OAAM's application dependencies; Linux desktop system libraries are installed separately. Install the coding tools whose assets you want to manage separately. Node.js and compilers are needed only for [building from source](BUILD.md).
+
+## Linux runtime libraries
+
+Linux also needs a graphical desktop session and system libraries such as GTK and NSS. On **Ubuntu 22.04**, install the runtime packages below if they are missing; no compiler or source build is required.
+
+```sh
+sudo apt-get update
+sudo apt-get install --no-install-recommends -y libgtk-3-0 libnss3 libasound2 libgbm1
+```
+
+The validated Linux environment is Ubuntu WSL/WSLg. Other Ubuntu releases may use different package names and are not covered by this instruction.
+
+## Updating a beta
+
+Close OAAM, extract the new archive into a new folder and start its executable. Beta versions use the same **OAAM Preview** profile, so the saved library is kept outside the program folder. Regular releases use a separate **OAAM** profile. Before an update, create a state backup in the interface; automatic updates and migration between these profiles are not provided.
+
+The archive's manifest records its SHA-256 and complete file inventory. `build-info.json` beside the executable identifies the version and source. Include that version when reporting a problem.
 
 ## First import
 

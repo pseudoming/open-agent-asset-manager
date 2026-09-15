@@ -1,8 +1,6 @@
 /** Claude Code adapter-family provider: source conformance first, target fail-closed. */
 
 import type { AdapterFrameworkProviderDefinition } from "@oaam/adapter-framework";
-import { makeClaudeCodeSourceCapabilities } from "./claudecode-provider-source-capabilities";
-import type { SourceContext, ScanResult } from "./claudecode-source-read-model";
 import type { AdapterAssetTargetCapability, AgentRuntimeDescriptor, AssetKind } from "@oaam/core";
 import {
     createNativeGlobalGuidanceProviderSupport,
@@ -14,9 +12,9 @@ import {
     createVerifiedNativeProjectGuidanceBuild,
     createVerifiedNativeProjectRuleBuild,
 } from "@oaam/core/adapter-spi";
-import { createClaudeWorkflowCanonicalSupports } from "./claudecode-target-workflow-canonical";
 import { CLAUDECODE_DIALECT_CONTRACTS } from "./claudecode-dialects";
 import { probeClaudeCode } from "./claudecode-probe";
+import { makeClaudeCodeSourceCapabilities } from "./claudecode-provider-source-capabilities";
 import {
     analyzeClaudeCodeMemoryTargets,
     analyzeClaudeCodeRuleTargets,
@@ -24,6 +22,7 @@ import {
     analyzeScopeVariant,
 } from "./claudecode-provider-target-analysis";
 import { CLAUDECODE_SOURCE_READ } from "./claudecode-source-read";
+import type { ScanResult, SourceContext } from "./claudecode-source-read-model";
 import {
     appendClaudeCodeBuildCompatibilityWarning,
     CLAUDE_CODE_APP_TARGET_BUILD_COMPATIBILITY,
@@ -47,6 +46,7 @@ import {
     createClaudeCodeJavaScriptWorkflowGraphTargetSupport,
     createClaudeCodeSkillGraphTargetSupport,
 } from "./claudecode-target-exact-graph";
+import { createClaudeWorkflowCanonicalSupports } from "./claudecode-target-workflow-canonical";
 
 export function createClaudeCodeProviderDefinition(
     PROVIDER_VERSION: string,
@@ -343,6 +343,7 @@ export function createClaudeCodeProviderDefinition(
     const SKILL_GRAPH_TARGET_SUPPORT = createClaudeCodeSkillGraphTargetSupport({
         adapterVersion: PROVIDER_VERSION,
         canonicalSkill: currentCanonicalTargets,
+        linuxProjectSkill: currentCanonicalTargets,
         agentRuntimes: AGENT_RUNTIMES,
         targetContextSchemaId: PROJECT_GUIDANCE_TARGET.targetContextSchemaId,
     });

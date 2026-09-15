@@ -71,10 +71,11 @@ macOS で確認できているのはソースコードの検証範囲のみで�
 安全なファイル操作はまだ Darwin に対応していないため、資産管理の一連の操作はまだサポートしていません。
 デスクトップのパッケージ化と UI テストも今後の作業です。
 
-現在のデスクトップ配布の主な対象は Windows x64 と、明示的に選択された Ubuntu WSL x64 環境です。
-上の手順では、**その Windows 配布物は生成されません**。Windows 向けネイティブ Shared、Electron のリソース、
-選択した WSL 向けの対応する Linux ランタイムとサービスを一緒に準備する必要があります。TypeScript のコンパイルだけで
-Windows のポータブルパッケージができるわけではなく、他の OS でのインストール動作も保証しません。
+公開済みのデスクトップパッケージは Windows x64 と Linux x64 を対象とします。Linux の実機証拠は
+Ubuntu WSL/WSLg に限定されます。Windows アプリでは明示的に選択した WSL のアセットも管理できます。通常の
+ダウンロードと起動は[使い方](USAGE.ja.md)をご覧ください。上のコマンドはワークスペースをビルドし、
+以下の配布コマンドがネイティブリソースと Windows 用 WSL サービスを含む完全なアーカイブを作成します。
+コンパイルだけでは他のプラットフォームでの実機動作を証明しません。
 
 Windows のネイティブ開発には Visual Studio の C++ ビルドツールと Python が必要です。共通の配布ビルダーを含みます。
 npm ci と npm run build の後、変更のない checkout から未使用の絶対パスに出力します。
@@ -88,7 +89,7 @@ npm run package:wsl-resource -- --output /absolute/new/oaam-wsl-resource
 アーカイブとマニフェストを Windows にコピーし、両方で同じソース commit を使います。Windows で npm ci と npm run build 後に実行します。
 
 ```powershell
-$archive = 'C:\oaam-build\OAAM-0.1.0-beta.1-restricted-wsl-support-linux-x64.tar.gz'
+$archive = 'C:\oaam-build\OAAM-0.1.0-beta.2-restricted-wsl-support-linux-x64.tar.gz'
 $nodeExecutable = (Get-Command node.exe -CommandType Application | Select-Object -First 1).Source
 $npmCli = Join-Path (Split-Path -Parent $nodeExecutable) 'node_modules/npm/bin/npm-cli.js'
 if (!(Test-Path -LiteralPath $npmCli -PathType Leaf)) { throw 'Node installation is missing npm-cli.js' }
@@ -106,7 +107,7 @@ Windows は同じ commit の WSL サービスと実際の PE メタデータも�
 公開 main の push は有効期限付き Actions テスト成果物を生成し、ダウンロードには GitHub ログインが必要です。
 正確な v&lt;version&gt; tag は検証と両パッケージの成功後に Release 草稿を作成し、beta はプレリリースにします。
 候補のレビューと公開後に通常の公開ダウンロードを提供します。ビルド成功だけでは実機動作の証明になりません。
-Linux の検証環境は Ubuntu WSL/WSLg、Windows のローカルと選択した WSL は別の証拠範囲です。補助サービスは Linux Desktop や独立 Headless ではありません。
+Linux の検証環境は Ubuntu WSL/WSLg です。Windows アプリは同梱サービスで明示的に選択した WSL にアクセスします。補助サービスは Linux Desktop や独立 Headless ではありません。
 
 Headless は Client/Host プロトコル用の技術的な入口です。データ、データベース、プラットフォーム、アクセスルートの
 明示的な設定が必要で、対話型デスクトップの代わりではありません。隔離した設定例は自動テストで確認できます。
